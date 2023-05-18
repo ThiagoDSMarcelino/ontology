@@ -1,4 +1,4 @@
-﻿namespace AlgebraicAbstractionOfFunctions;
+﻿namespace AlgebraicSharp;
 
 public interface IFunction
 {

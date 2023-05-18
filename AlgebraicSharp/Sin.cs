@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlgebraicAbstractionOfFunctions;
+namespace AlgebraicSharp;
 
 public class Sin : IFunction
 {
@@ -12,5 +12,8 @@ public class Sin : IFunction
         Math.Sin(u[x]);
 
     public IFunction Derive() =>
-        new Mult(u.Derive(), new Cos(u));
+        new Mult(new Cos(u), u.Derive());
+    
+    public override string ToString() =>
+        $"Sin({u})";
 }

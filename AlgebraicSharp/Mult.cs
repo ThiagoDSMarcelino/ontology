@@ -2,7 +2,7 @@
 using System.Linq;
 using System;
 
-namespace AlgebraicAbstractionOfFunctions;
+namespace AlgebraicSharp;
 
 public class Mult : IFunction
 {
@@ -17,6 +17,22 @@ public class Mult : IFunction
     public void Add(IFunction function) =>
         functions.Add(function);
 
-    public IFunction Derive() =>
-        throw new NotImplementedException();
+    public IFunction Derive()
+    {
+        Sum result = new();
+
+        for (int i = 0; i < functions.Count; i++)
+        {
+            Mult mult = new();
+            for (int j = 0; j < functions.Count; j++)
+                mult.Add(i == j ? functions[j].Derive() : functions[j]);
+
+            result.Add(mult);
+        }
+
+        return result;
+    }
+    
+    public override string ToString() =>
+        "(" + String.Join(" * ", functions.Select(func => func.ToString())) + ")";
 }

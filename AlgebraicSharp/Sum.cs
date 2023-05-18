@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 
-namespace AlgebraicAbstractionOfFunctions;
+namespace AlgebraicSharp;
 
 public class Sum : IFunction
 {
@@ -19,4 +20,7 @@ public class Sum : IFunction
 
     public IFunction Derive() =>
         new Sum(functions.Select(f => f.Derive()).ToArray());
+
+    public override string ToString() =>
+        "(" + String.Join(" + ", functions.Select(func => func.ToString())) + ")";
 }

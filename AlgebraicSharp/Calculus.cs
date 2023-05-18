@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace AlgebraicAbstractionOfFunctions;
+namespace AlgebraicSharp;
 
-public static class FunctionUtil
+public static class Calculus
 {
     private static Linear linear = null;
     public static IFunction x
