@@ -1,19 +1,19 @@
-﻿using System;
+using System;
 
 namespace AlgebraicSharp;
 
-public class Cos : IFunction
+public class Ln : IFunction
 {
     private readonly IFunction u;
-    public Cos(IFunction u) =>
+    public Ln(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        Math.Cos(u[x]);
+        Math.Log(u[x]);
 
     public IFunction Derive() =>
-        new Mult(new Sin(u), u.Derive());
-
+        throw new NotImplementedException();
+    
     public override string ToString() =>
-        $"Cos({u})";
+        $"Ln({u})";
 }

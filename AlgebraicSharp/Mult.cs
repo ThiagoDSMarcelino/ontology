@@ -34,5 +34,5 @@ public class Mult : IFunction
     }
     
     public override string ToString() =>
-        "(" + String.Join(" * ", functions.Select(func => func.ToString())) + ")";
+        String.Join(" * ", functions.Select(func => func.ToString()));
 }

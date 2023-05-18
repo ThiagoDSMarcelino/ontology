@@ -1,7 +1,8 @@
 ﻿using static AlgebraicSharp.Calculus;
+using AlgebraicSharp;
 using System;
-Math.Pow();
-var sla = x + x * x + x + 4 * 2;
 
-// Console.Write($"{sla}(4) = {sla[4]}");
-System.Console.WriteLine($"");
+var num = new Constant(60);
+var calc = sin(num) * sin(num) / cos(num) * cos(num);
+
+Console.Write($"f(x) = {calc}\nf({num}) = {calc[60]}");

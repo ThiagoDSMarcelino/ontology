@@ -26,4 +26,11 @@ public interface IFunction
         new Mult(f, new Constant(n));
 
     #endregion
+
+    #region Quotient
+
+    public static IFunction operator /(IFunction f, IFunction g) =>
+        new Quotient(f, g);
+
+    #endregion
 }

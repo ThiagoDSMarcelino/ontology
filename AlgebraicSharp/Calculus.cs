@@ -9,7 +9,7 @@ public static class Calculus
     {
         get
         {
-            linear ??= new Linear();
+            linear ??= new();
 
             return linear;
         }
@@ -20,15 +20,15 @@ public static class Calculus
     {
         get
         {
-            euler ??= new Constant(Math.E);
+            euler ??= new(Math.E);
 
             return euler;
         }
     }
 
-    public static IFunction sin(IFunction f) =>
-        new Sin(f);
+    public static IFunction sin(IFunction u) =>
+        new Sin(u);
 
-    public static IFunction cos(IFunction f) =>
-        new Cos(f);
+    public static IFunction cos(IFunction u) =>
+        new Cos(u);
 }
