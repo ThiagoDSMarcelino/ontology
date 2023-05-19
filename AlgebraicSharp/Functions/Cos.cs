@@ -1,6 +1,8 @@
 ﻿using System;
 
-namespace AlgebraicSharp;
+namespace AlgebraicSharp.Funtions;
+
+using AlgebraicSharp.Operations;
 
 public class Cos : IFunction
 {
@@ -12,7 +14,7 @@ public class Cos : IFunction
         Math.Cos(u[x]);
 
     public IFunction Derive() =>
-        new Mult(new Sin(u), u.Derive());
+        new Product(new Sin(u), u.Derive());
 
     public override string ToString() =>
         $"Cos({u})";

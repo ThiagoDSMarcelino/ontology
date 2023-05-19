@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System;
 
-namespace AlgebraicSharp;
+namespace AlgebraicSharp.Operations;
+
+using AlgebraicSharp.Funtions;
 
 public class Sum : IFunction
 {
-
     private readonly List<IFunction> functions = new();
 
     public Sum(params IFunction[] functions) =>
@@ -22,5 +22,5 @@ public class Sum : IFunction
         new Sum(functions.Select(f => f.Derive()).ToArray());
 
     public override string ToString() =>
-        "(" + String.Join(" + ", functions.Select(func => func.ToString())) + ")";
+        "(" + string.Join(" + ", functions.Select(func => func.ToString())) + ")";
 }

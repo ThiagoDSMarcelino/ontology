@@ -1,6 +1,7 @@
+using AlgebraicSharp.Operations;
 using System;
 
-namespace AlgebraicSharp;
+namespace AlgebraicSharp.Funtions;
 
 public class Ln : IFunction
 {
@@ -12,8 +13,8 @@ public class Ln : IFunction
         Math.Log(u[x]);
 
     public IFunction Derive() =>
-        throw new NotImplementedException();
-    
+        new Quotient(u.Derive(), u);
+
     public override string ToString() =>
         $"Ln({u})";
 }

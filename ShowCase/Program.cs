@@ -1,8 +1,10 @@
 ﻿using static AlgebraicSharp.Calculus;
-using AlgebraicSharp;
 using System;
 
-var num = new Constant(60);
-var calc = sin(num) * sin(num) / cos(num) * cos(num);
+double n = 1;
 
-Console.Write($"f(x) = {calc}\nf({num}) = {calc[60]}");
+var f = log(x) - ln(x) + log(x, 5);
+
+
+WriteLineFunc(f, n);
+WriteLineFunc(f.Derive(), n, 1);

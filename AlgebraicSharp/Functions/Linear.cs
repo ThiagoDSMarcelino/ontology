@@ -1,4 +1,4 @@
-﻿namespace AlgebraicSharp;
+﻿namespace AlgebraicSharp.Funtions;
 
 internal class Linear : IFunction
 {
