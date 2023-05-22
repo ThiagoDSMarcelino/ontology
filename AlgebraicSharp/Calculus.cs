@@ -9,6 +9,8 @@ using Funtions;
 
 public static class Calculus
 {
+    #region Linear
+
     private static Linear linear = null;
     public static IFunction x
     {
@@ -19,6 +21,26 @@ public static class Calculus
             return linear;
         }
     }
+    public static IFunction y
+    {
+        get
+        {
+            linear ??= new();
+
+            return linear;
+        }
+    }
+    public static IFunction z
+    {
+        get
+        {
+            linear ??= new();
+
+            return linear;
+        }
+    }
+
+    #endregion
 
     #region Constants
 
@@ -46,6 +68,8 @@ public static class Calculus
 
     #endregion
 
+    #region Functions
+
     public static IFunction sin(IFunction u) =>
         new Sin(u);
 
@@ -60,6 +84,8 @@ public static class Calculus
 
     public static IFunction log(IFunction u, double a) =>
         new Log(u, a);
+
+    #endregion
 
     #region Console
 

@@ -18,7 +18,7 @@ public class Pow : IFunction
         Math.Pow(a[x], u[x]);
 
     public IFunction Derive() =>
-        new Pow(a, u) * ln(a) * u.Derive();
+        a^u * ln(a) * u.Derive();
 
     public override string ToString() =>
         $"{a}^({u})";

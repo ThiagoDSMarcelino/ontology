@@ -1,5 +1,4 @@
 ﻿using static AlgebraicSharp.Calculus;
-using System;
 
 double n = 1;
 
