@@ -8,6 +8,7 @@ public class Log : IFunction
 {
     private readonly IFunction u;
     private readonly double a;
+
     public Log(IFunction u, double a)
     {
         this.u = u;

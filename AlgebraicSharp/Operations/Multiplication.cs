@@ -5,11 +5,11 @@ namespace AlgebraicSharp.Operations;
 
 using AlgebraicSharp.Funtions;
 
-public class Product : IFunction
+public class Multiplication : IFunction
 {
     private readonly List<IFunction> functions = new();
 
-    public Product(params IFunction[] functions) =>
+    public Multiplication(params IFunction[] functions) =>
         this.functions = functions.ToList();
 
     public double this[double x] =>
@@ -20,9 +20,9 @@ public class Product : IFunction
 
     public IFunction Derive() =>
         new Sum(functions.Select(
-            (_, i) => new Product(functions.Select(
+            (_, i) => new Multiplication(functions.Select(
                 (func, j) => i == j ? functions[j].Derive() : functions[j]).ToArray())).ToArray());
 
     public override string ToString() =>
-        string.Join(" * ", functions.Select(func => func.ToString()));
+        "(" + string.Join(" * ", functions.Select(func => func.ToString())) + ")";
 }

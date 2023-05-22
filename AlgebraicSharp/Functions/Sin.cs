@@ -2,6 +2,8 @@
 
 namespace AlgebraicSharp.Funtions;
 
+using static Calculus;
+
 public class Sin : IFunction
 {
     private readonly IFunction u;
@@ -12,7 +14,7 @@ public class Sin : IFunction
         Math.Sin(u[x]);
 
     public IFunction Derive() =>
-        new Cos(u) * u.Derive();
+        cos(u) * u.Derive();
 
     public override string ToString() =>
         $"Sin({u})";

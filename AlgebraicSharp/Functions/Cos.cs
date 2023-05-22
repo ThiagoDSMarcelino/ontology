@@ -5,6 +5,7 @@ namespace AlgebraicSharp.Funtions;
 public class Cos : IFunction
 {
     private readonly IFunction u;
+
     public Cos(IFunction u) =>
         this.u = u;
 

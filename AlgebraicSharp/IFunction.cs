@@ -1,6 +1,7 @@
-﻿namespace AlgebraicSharp.Funtions;
+﻿namespace AlgebraicSharp;
 
-using AlgebraicSharp.Operations;
+using Funtions;
+using Operations;
 
 public interface IFunction
 {
@@ -32,22 +33,22 @@ public interface IFunction
     #region Multiplication
 
     public static IFunction operator *(IFunction f, IFunction g) =>
-        new Product(f, g);
+        new Multiplication(f, g);
     public static IFunction operator *(double n, IFunction f) =>
-        new Product(f, new Constant(n));
+        new Multiplication(f, new Constant(n));
     public static IFunction operator *(IFunction f, double n) =>
-        new Product(f, new Constant(n));
+        new Multiplication(f, new Constant(n));
 
     #endregion
 
-    #region Quotient
+    #region Division
 
     public static IFunction operator /(IFunction f, IFunction g) =>
-        new Product(f, g^-1);
+        new Multiplication(f, g ^ -1);
     public static IFunction operator /(double f, IFunction g) =>
-        new Product(new Constant(f), g^-1);
+        new Multiplication(new Constant(f), g ^ -1);
     public static IFunction operator /(IFunction f, double g) =>
-        new Product(f, (IFunction)new Constant(g)^-1);
+        new Multiplication(f, (IFunction)new Constant(g) ^ -1);
 
     #endregion
 
@@ -56,7 +57,7 @@ public interface IFunction
     public static IFunction operator ^(IFunction a, IFunction u) =>
         new Pow(a, u);
     public static IFunction operator ^(double a, IFunction u) =>
-        new Pow( new Constant(a), u);
+        new Pow(new Constant(a), u);
     public static IFunction operator ^(IFunction a, double u) =>
         new Pow(a, new Constant(u));
 
