@@ -43,11 +43,11 @@ public interface IFunction
     #region Quotient
 
     public static IFunction operator /(IFunction f, IFunction g) =>
-        new Quotient(f, g);
-    public static IFunction operator /(double n, IFunction g) =>
-        new Quotient(new Constant(n), g);
-    public static IFunction operator /(IFunction f, double n) =>
-        new Quotient(f, new Constant(n));
+        new Product(f, g^-1);
+    public static IFunction operator /(double f, IFunction g) =>
+        new Product(new Constant(f), g^-1);
+    public static IFunction operator /(IFunction f, double g) =>
+        new Product(f, (IFunction)new Constant(g)^-1);
 
     #endregion
 
