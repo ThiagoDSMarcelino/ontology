@@ -19,6 +19,12 @@ public class Sum : IFunction
     public IFunction Derive() =>
         new Sum(functions.Select(f => f.Derive()).ToArray());
 
+    public IFunction Integrate() =>
+        throw new System.NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new System.NotImplementedException();
+
     public override string ToString() =>
         "(" + string.Join(" + ", functions.Select(func => func.ToString())) + ")";
 }

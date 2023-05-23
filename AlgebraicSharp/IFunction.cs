@@ -1,28 +1,85 @@
 ﻿namespace AlgebraicSharp;
 
-using Functions;
 using Operations;
+using Functions;
 
 public interface IFunction
 {
-    public abstract double this[double x] { get; }
-    public abstract IFunction Derive();
+    double this[double x] { get; }
+
+    IFunction Derive();
+    IFunction Integrate();
+    IFunction Simplify();
 
     #region Sum
 
-    public static IFunction operator +(IFunction f, IFunction g) =>
-        new Sum(f, g);
-    public static IFunction operator +(double n, IFunction f) =>
-        new Sum(f, new Constant(n));
-    public static IFunction operator +(IFunction f, double n) =>
-        new Sum(f, new Constant(n));
+    public static IFunction operator +(IFunction f, IFunction g)
+    {
+        if (f.GetType() == typeof(Sum))
+        {
+            var temp = (Sum)f;
+            temp.Add(g);
+
+            return temp;
+        }
+        else if (g.GetType() == typeof(Sum))
+        {
+            var temp = (Sum)g;
+            temp.Add(f);
+
+            return temp;
+        }
+
+        return new Sum(f, g);
+    }
+    public static IFunction operator +(double n, IFunction f)
+    {
+        if (f.GetType() == typeof(Sum))
+        {
+            var temp = (Sum)f;
+            temp.Add(new Constant(n));
+
+            return temp;
+        }
+
+        return new Sum(f, new Constant(n));
+    }
+    public static IFunction operator +(IFunction f, double n)
+    {
+        if (f.GetType() == typeof(Sum))
+        {
+            var temp = (Sum)f;
+            temp.Add(new Constant(n));
+
+            return temp;
+        }
+
+        return new Sum(f, new Constant(n));
+    }
 
     #endregion
 
     #region Sub
 
-    public static IFunction operator -(IFunction f, IFunction g) =>
-        new Sub(f, g);
+    public static IFunction operator -(IFunction f, IFunction g)
+    {
+        if (f.GetType() == typeof(Sub))
+        {
+            var temp = (Sub)f;
+            temp.Add(g);
+
+            return temp;
+        }
+        else if (g.GetType() == typeof(Sub))
+        {
+            var temp = (Sub)g;
+            temp.Add(f);
+
+            return temp;
+        }
+
+        return new Sub(f, g);
+    }
     public static IFunction operator -(double n, IFunction f) =>
         new Sub(f, new Constant(n));
     public static IFunction operator -(IFunction f, double n) =>
@@ -32,12 +89,49 @@ public interface IFunction
 
     #region Multiplication
 
-    public static IFunction operator *(IFunction f, IFunction g) =>
-        new Multiplication(f, g);
-    public static IFunction operator *(double n, IFunction f) =>
-        new Multiplication(f, new Constant(n));
-    public static IFunction operator *(IFunction f, double n) =>
-        new Multiplication(f, new Constant(n));
+    public static IFunction operator *(IFunction f, IFunction g)
+    {
+        if (f.GetType() == typeof(Multiplication))
+        {
+            var temp = (Multiplication)f;
+            temp.Add(g);
+
+            return temp;
+        }
+        else if (g.GetType() == typeof(Multiplication))
+        {
+            var temp = (Multiplication)g;
+            temp.Add(f);
+
+            return temp;
+        }
+        
+        return new Multiplication(f, g);
+    }
+    public static IFunction operator *(double n, IFunction f)
+    {
+        if (f.GetType() == typeof(Multiplication))
+        {
+            var temp = (Multiplication)f;
+            temp.Add(new Constant(n));
+
+            return temp;
+        }
+
+        return new Multiplication(f, new Constant(n));
+    }
+    public static IFunction operator *(IFunction f, double n)
+    {
+        if (f.GetType() == typeof(Multiplication))
+        {
+            var temp = (Multiplication)f;
+            temp.Add(new Constant(n));
+
+            return temp;
+        }
+
+        return new Multiplication(f, new Constant(n));
+    }
 
     #endregion
 

@@ -15,6 +15,12 @@ public class Cos : IFunction
     public IFunction Derive() =>
         new Sin(u) * u.Derive();
 
+    public IFunction Integrate() =>
+        throw new NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new NotImplementedException();
+
     public override string ToString() =>
         $"Cos({u})";
 }

@@ -20,6 +20,12 @@ public class Pow : IFunction
     public IFunction Derive() =>
         v * (u ^ (v - 1)) * u.Derive() + (u ^ v) * ln(u) * v.Derive();
 
+    public IFunction Integrate() =>
+        throw new NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new NotImplementedException();
+
     public override string ToString() =>
         $"({u}^({v}))";
 }

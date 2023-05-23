@@ -4,7 +4,6 @@ using System;
 namespace AlgebraicSharp;
 
 using AlgebraicSharp.Functions;
-using Functions;
 
 #pragma warning disable IDE1006
 

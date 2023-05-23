@@ -11,13 +11,19 @@ public class Sub : IFunction
         this.functions = functions.ToList();
 
     public double this[double x] =>
-        functions[0][x] - functions.Skip(1).Sum(f => -f[x]);
+        functions.Skip(1).Aggregate(functions[0][x], (result, f) => result - f[x]);
 
     public void Add(IFunction function) =>
         functions.Add(function);
 
     public IFunction Derive() =>
         new Sub(functions.Select(f => f.Derive()).ToArray());
+
+    public IFunction Integrate() =>
+        throw new System.NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         "(" + string.Join(" - ", functions.Select(func => func.ToString())) + ")";

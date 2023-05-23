@@ -21,6 +21,12 @@ public class Log : IFunction
     public IFunction Derive() =>
         u.Derive() / u * log(e, a);
 
+    public IFunction Integrate() =>
+        throw new NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new NotImplementedException();
+
     public override string ToString() =>
         $"Log{a}({u})";
 }

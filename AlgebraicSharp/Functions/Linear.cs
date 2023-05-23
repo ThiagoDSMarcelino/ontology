@@ -8,6 +8,12 @@ internal class Linear : IFunction
     public IFunction Derive() =>
         new Constant(1);
 
+    public IFunction Integrate() =>
+        throw new System.NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new System.NotImplementedException();
+
     public override string ToString() =>
         "x";
 }
