@@ -1,8 +1,10 @@
-﻿using static AlgebraicSharp.Calculus;
+﻿using System;
+using static AlgebraicSharp.Calculus;
 
-double n = 3;
+double n = 2;
 
-var f =  -x - x - x;
+var f = (x^2)^2;
+
 
 WriteLineFunc(f, n);
-WriteLineFunc(f.Derive(), n, 1);
+//WriteLineFunc(f.Derive(), n);

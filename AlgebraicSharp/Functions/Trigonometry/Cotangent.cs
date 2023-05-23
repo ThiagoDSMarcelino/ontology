@@ -15,7 +15,7 @@ public class Cotangent : IFunction
         1 / Math.Tan(x);
 
     public IFunction Derive() =>
-        u.Derive() * cosec(u) * cosec(u);
+        -u.Derive() * cosec(u) * cosec(u);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();

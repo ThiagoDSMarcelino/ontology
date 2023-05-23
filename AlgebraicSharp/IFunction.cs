@@ -2,6 +2,7 @@
 
 using Operations;
 using Functions;
+using System;
 
 public interface IFunction
 {
@@ -59,7 +60,7 @@ public interface IFunction
 
     #endregion
 
-    #region Sub
+    #region Subtraction
 
     public static IFunction operator -(IFunction f) =>
         new Negative(f);
@@ -168,14 +169,44 @@ public interface IFunction
 
     #endregion
 
-    #region Pow
+    #region Exponentiation
+    public static IFunction operator ^(IFunction a, IFunction u)
+    {
+        if (a.GetType() == typeof(Exponentiation))
+        {
+            var temp = (Exponentiation)a;
+            temp.Add(u);
 
-    public static IFunction operator ^(IFunction a, IFunction u) =>
-        new Exponentiation(a, u);
+            return temp;
+        }
+
+        return new Exponentiation(a, u);
+    }
     public static IFunction operator ^(double a, IFunction u) =>
         new Exponentiation(new Constant(a), u);
-    public static IFunction operator ^(IFunction a, double u) =>
-        new Exponentiation(a, new Constant(u));
+    public static IFunction operator ^(IFunction a, double u)
+    {
+        if (a.GetType() == typeof(Exponentiation))
+        {
+            var temp = (Exponentiation)a;
+            temp.Add(new Constant(u));
+
+            return temp;
+        }
+
+        return new Exponentiation(a, new Constant(u));
+    }
+
+    #endregion
+
+    #region Root
+
+    public static IFunction operator |(IFunction a, IFunction u) =>
+        new Exponentiation(a, 1d / u);
+    public static IFunction operator |(double a, IFunction u) =>
+        new Exponentiation(new Constant(a), 1d / u);
+    public static IFunction operator |(IFunction a, double u) =>
+        new Exponentiation(a, new Constant(1d / u));
 
     #endregion
 }

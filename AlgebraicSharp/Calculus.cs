@@ -76,36 +76,81 @@ public static class Calculus
     public static IFunction log(IFunction u) =>
         new Logarithm(u, new Constant(10));
 
-    public static IFunction log(double u, IFunction a) =>
-        new Logarithm(new Constant(u), a);
+    public static IFunction log(IFunction newBase, IFunction u) =>
+        new Logarithm(newBase, u);
 
-    public static IFunction log(IFunction u, double a) =>
-        new Logarithm(u, new Constant(a));
+    public static IFunction log(double newBase, IFunction u) =>
+        new Logarithm(new Constant(newBase), u);
 
-    public static IFunction log(double u, double a) =>
-        new Logarithm(new Constant(u), new Constant(a));
+    public static IFunction log(IFunction newBase, double u) =>
+        new Logarithm(newBase, new Constant(u));
+
+    public static IFunction log(double newBase, double u) =>
+        new Logarithm(new Constant(newBase), new Constant(u));
 
     #endregion
 
     #region Trigonometry
 
+    #region Sine
+    
     public static IFunction sin(IFunction u) =>
         new Sine(u);
+    
+    public static IFunction sin(double u) =>
+        new Sine(new Constant(u));
 
+    #endregion
+
+    #region Cosine
+    
     public static IFunction cos(IFunction u) =>
         new Cosine(u);
+    
+    public static IFunction cos(double u) =>
+        new Cosine(new Constant(u));
+
+    #endregion
+
+    #region Tangent
 
     public static IFunction tg(IFunction u) =>
         new Tangent(u);
+    
+    public static IFunction tg(double u) =>
+        new Tangent(new Constant(u));
+
+    #endregion
+
+    #region Cotangent
 
     public static IFunction cotg(IFunction u) =>
         new Cotangent(u);
+    
+    public static IFunction cotg(double u) =>
+        new Cotangent(new Constant(u));
+
+    #endregion
+
+    #region Secant
 
     public static IFunction sec(IFunction u) =>
         new Secant(u);
+    
+    public static IFunction sec(double u) =>
+        new Secant(new Constant(u));
+
+    #endregion
+
+    #region Cosecant
 
     public static IFunction cosec(IFunction u) =>
         new Cosecant(u);
+    
+    public static IFunction cosec(double u) =>
+        new Cosecant(new Constant(u));
+
+    #endregion
 
     #endregion
 
@@ -113,12 +158,12 @@ public static class Calculus
 
     #region Console
 
-    public static void WriteFunc(IFunction f, double n, int derivative = 0) =>
-        Console.Write(GetFunc(f, n, derivative));
-    public static void WriteLineFunc(IFunction f, double n, int derivative = 0) =>
-        Console.WriteLine(GetFunc(f, n, derivative));
-    public static string GetFunc(IFunction f, double n, int derivative) =>
-        $"f{getDerivative(derivative)}(x) = {f}\nf{getDerivative(derivative)}({n}) = {f[n]}";
+    public static void WriteFunc(IFunction func, double x, int derivative = 0) =>
+        Console.Write(GetFunc(func, x, derivative));
+    public static void WriteLineFunc(IFunction func, double x, int derivative = 0) =>
+        Console.WriteLine(GetFunc(func, x, derivative));
+    public static string GetFunc(IFunction func, double x, int derivative) =>
+        $"f{getDerivative(derivative)}(x) = {func}\nf{getDerivative(derivative)}({x}) = {func[x]}";
     private static string getDerivative(int derivative) =>
         string.Join("", Enumerable.Range(0, derivative).Select(x => "'").ToArray());
 

@@ -15,7 +15,7 @@ public class Cosine : IFunction
         Math.Cos(u[x]);
 
     public IFunction Derive() =>
-        sin(u) * u.Derive();
+        -u.Derive() * sin(u);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();

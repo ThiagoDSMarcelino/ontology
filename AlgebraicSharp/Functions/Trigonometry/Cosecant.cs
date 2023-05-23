@@ -15,7 +15,7 @@ public class Cosecant : IFunction
         1 / Math.Sin(x);
 
     public IFunction Derive() =>
-        u.Derive() * cosec(u) * cotg(u);
+        -u.Derive() * cosec(u) * cotg(u);
         
 
     public IFunction Integrate() =>
