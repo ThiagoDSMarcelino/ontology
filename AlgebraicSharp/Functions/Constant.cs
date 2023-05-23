@@ -1,4 +1,4 @@
-﻿namespace AlgebraicSharp.Funtions;
+﻿namespace AlgebraicSharp.Functions;
 
 public class Constant : IFunction
 {

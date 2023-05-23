@@ -3,8 +3,6 @@ using System.Linq;
 
 namespace AlgebraicSharp.Operations;
 
-using AlgebraicSharp.Funtions;
-
 public class Sum : IFunction
 {
     private readonly List<IFunction> functions = new();

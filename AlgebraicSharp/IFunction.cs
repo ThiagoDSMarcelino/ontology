@@ -1,6 +1,6 @@
 ﻿namespace AlgebraicSharp;
 
-using Funtions;
+using Functions;
 using Operations;
 
 public interface IFunction

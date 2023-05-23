@@ -3,8 +3,6 @@ using System.Linq;
 
 namespace AlgebraicSharp.Operations;
 
-using AlgebraicSharp.Funtions;
-
 public class Multiplication : IFunction
 {
     private readonly List<IFunction> functions = new();

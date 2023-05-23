@@ -1,6 +1,6 @@
 using System;
 
-namespace AlgebraicSharp.Funtions;
+namespace AlgebraicSharp.Functions;
 
 public class Ln : IFunction
 {
