@@ -2,19 +2,18 @@
 
 namespace AlgebraicSharp.Functions;
 
-using static Calculus;
-
-public class Sin : IFunction
+public class Cosine : IFunction
 {
     private readonly IFunction u;
-    public Sin(IFunction u) =>
+
+    public Cosine(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        Math.Sin(u[x]);
+        Math.Cos(u[x]);
 
     public IFunction Derive() =>
-        cos(u) * u.Derive();
+        new Sine(u) * u.Derive();
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -23,5 +22,5 @@ public class Sin : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"Sin({u})";
+        $"cos({u})";
 }

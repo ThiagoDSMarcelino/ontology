@@ -62,10 +62,10 @@ public static class Calculus
     #region Functions
 
     public static IFunction sin(IFunction u) =>
-        new Sin(u);
+        new Sine(u);
 
     public static IFunction cos(IFunction u) =>
-        new Cos(u);
+        new Cosine(u);
 
     public static IFunction ln(IFunction u) =>
         new Ln(u);
@@ -75,6 +75,12 @@ public static class Calculus
 
     public static IFunction log(IFunction u, double a) =>
         new Log(u, a);
+    public static IFunction sec(IFunction u) =>
+        new Secant(u);
+    public static IFunction tg(IFunction u) =>
+        new Tangent(u);
+    public static IFunction cosec(IFunction u) =>
+        new Cosecant(u);
 
     #endregion
 

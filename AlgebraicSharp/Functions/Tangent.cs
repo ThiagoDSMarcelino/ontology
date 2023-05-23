@@ -4,22 +4,18 @@ namespace AlgebraicSharp.Functions;
 
 using static Calculus;
 
-public class Log : IFunction
+public class Tangent : IFunction
 {
     private readonly IFunction u;
-    private readonly double a;
 
-    public Log(IFunction u, double a)
-    {
+    public Tangent(IFunction u) =>
         this.u = u;
-        this.a = a;
-    }
 
     public double this[double x] =>
-        Math.Log(u[x], a);
+        Math.Tan(u[x]);
 
     public IFunction Derive() =>
-        u.Derive() / u * log(e, a);
+        u.Derive() * sec(u) * sec(u);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -28,5 +24,5 @@ public class Log : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"log{a}({u})";
+        $"tg({u})";
 }

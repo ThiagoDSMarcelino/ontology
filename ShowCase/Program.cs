@@ -1,10 +1,8 @@
 ﻿using static AlgebraicSharp.Calculus;
-using System;
 
-double n = 2;
+double n = 3;
 
-var f = x * x * x;
-Console.WriteLine(f.Derive());
+var f =  -x - x - x;
 
-//WriteLineFunc(f, n);
-//WriteLineFunc(f.Derive(), n, 1);
+WriteLineFunc(f, n);
+WriteLineFunc(f.Derive(), n, 1);

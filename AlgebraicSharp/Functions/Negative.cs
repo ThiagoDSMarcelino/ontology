@@ -1,17 +1,17 @@
 ﻿namespace AlgebraicSharp.Functions;
 
-public class Constant : IFunction
+public class Negative : IFunction
 {
-    private readonly double n;
+    private readonly IFunction u;
 
-    public Constant(double n) =>
-        this.n = n;
+    public Negative(IFunction u) =>
+        this.u = u;
 
     public double this[double x] =>
-        n;
+        -u[x];
 
     public IFunction Derive() =>
-        new Constant(0);
+        -u.Derive();
 
     public IFunction Integrate() =>
         throw new System.NotImplementedException();
@@ -20,5 +20,5 @@ public class Constant : IFunction
         throw new System.NotImplementedException();
 
     public override string ToString() =>
-        n.ToString();
+        "-" + u.ToString();
 }

@@ -2,18 +2,20 @@
 
 namespace AlgebraicSharp.Functions;
 
-public class Cos : IFunction
+using static Calculus;
+
+public class Secant : IFunction
 {
     private readonly IFunction u;
 
-    public Cos(IFunction u) =>
+    public Secant(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        Math.Cos(u[x]);
+        1 / Math.Cos(x);
 
     public IFunction Derive() =>
-        new Sin(u) * u.Derive();
+        u.Derive() * cosec(u) * cosec(u);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -22,5 +24,5 @@ public class Cos : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"Cos({u})";
+        $"sec({u})";
 }

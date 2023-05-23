@@ -21,5 +21,5 @@ public class Ln : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"Ln({u})";
+        $"ln({u})";
 }

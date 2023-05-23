@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace AlgebraicSharp.Operations;
 
-public class Sub : IFunction
+public class Subtraction : IFunction
 {
     private readonly List<IFunction> functions = new();
 
-    public Sub(params IFunction[] functions) =>
+    public Subtraction(params IFunction[] functions) =>
         this.functions = functions.ToList();
 
     public double this[double x] =>
@@ -17,7 +17,7 @@ public class Sub : IFunction
         functions.Add(function);
 
     public IFunction Derive() =>
-        new Sub(functions.Select(f => f.Derive()).ToArray());
+        new Subtraction(functions.Select(f => f.Derive()).ToArray());
 
     public IFunction Integrate() =>
         throw new System.NotImplementedException();

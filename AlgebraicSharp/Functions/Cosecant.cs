@@ -2,24 +2,18 @@
 
 namespace AlgebraicSharp.Functions;
 
-using static Calculus;
-
-public class Log : IFunction
+public class Cosecant : IFunction
 {
     private readonly IFunction u;
-    private readonly double a;
 
-    public Log(IFunction u, double a)
-    {
+    public Cosecant(IFunction u) =>
         this.u = u;
-        this.a = a;
-    }
 
     public double this[double x] =>
-        Math.Log(u[x], a);
+        1 / Math.Sin(x);
 
     public IFunction Derive() =>
-        u.Derive() / u * log(e, a);
+        throw new NotImplementedException();
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -28,5 +22,5 @@ public class Log : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"log{a}({u})";
+        $"cosec({u})";
 }

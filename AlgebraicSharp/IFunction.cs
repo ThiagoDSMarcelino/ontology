@@ -61,29 +61,51 @@ public interface IFunction
 
     #region Sub
 
+    public static IFunction operator -(IFunction f) =>
+        new Negative(f);
     public static IFunction operator -(IFunction f, IFunction g)
     {
-        if (f.GetType() == typeof(Sub))
+        if (f.GetType() == typeof(Subtraction))
         {
-            var temp = (Sub)f;
+            var temp = (Subtraction)f;
             temp.Add(g);
 
             return temp;
         }
-        else if (g.GetType() == typeof(Sub))
+        else if (g.GetType() == typeof(Subtraction))
         {
-            var temp = (Sub)g;
+            var temp = (Subtraction)g;
             temp.Add(f);
 
             return temp;
         }
 
-        return new Sub(f, g);
+        return new Subtraction(f, g);
     }
-    public static IFunction operator -(double n, IFunction f) =>
-        new Sub(f, new Constant(n));
-    public static IFunction operator -(IFunction f, double n) =>
-        new Sub(f, new Constant(n));
+    public static IFunction operator -(double n, IFunction f)
+    {
+        if (f.GetType() == typeof(Subtraction))
+        {
+            var temp = (Subtraction)f;
+            temp.Add(new Constant(n));
+
+            return temp;
+        }
+
+        return new Subtraction(f, new Constant(n));
+    }
+    public static IFunction operator -(IFunction f, double n)
+    {
+        if (f.GetType() == typeof(Subtraction))
+        {
+            var temp = (Subtraction)f;
+            temp.Add(new Constant(n));
+
+            return temp;
+        }
+
+        return new Subtraction(f, new Constant(n));
+    }
 
     #endregion
 
