@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Funtions;
+namespace AlgebraicSharp.Functions;
 
 using static Calculus;
 
@@ -8,6 +8,7 @@ public class Log : IFunction
 {
     private readonly IFunction u;
     private readonly double a;
+
     public Log(IFunction u, double a)
     {
         this.u = u;
@@ -19,6 +20,12 @@ public class Log : IFunction
 
     public IFunction Derive() =>
         u.Derive() / u * log(e, a);
+
+    public IFunction Integrate() =>
+        throw new NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new NotImplementedException();
 
     public override string ToString() =>
         $"Log{a}({u})";

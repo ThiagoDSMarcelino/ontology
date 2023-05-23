@@ -3,7 +3,7 @@ using System;
 
 namespace AlgebraicSharp;
 
-using Funtions;
+using AlgebraicSharp.Functions;
 
 #pragma warning disable IDE1006
 
@@ -22,15 +22,6 @@ public static class Calculus
         }
     }
     public static IFunction y
-    {
-        get
-        {
-            linear ??= new();
-
-            return linear;
-        }
-    }
-    public static IFunction z
     {
         get
         {

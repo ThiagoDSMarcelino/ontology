@@ -1,25 +1,31 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Funtions;
+namespace AlgebraicSharp.Functions;
 
 using static Calculus;
 
 public class Pow : IFunction
 {
-    private readonly IFunction a;
     private readonly IFunction u;
-    public Pow(IFunction a, IFunction u)
+    private readonly IFunction v;
+    public Pow(IFunction u, IFunction v)
     {
-        this.a = a;
         this.u = u;
+        this.v = v;
     }
 
     public double this[double x] =>
-        Math.Pow(a[x], u[x]);
+        Math.Pow(u[x], v[x]);
 
     public IFunction Derive() =>
-        a^u * ln(a) * u.Derive();
+        v * (u ^ (v - 1)) * u.Derive() + (u ^ v) * ln(u) * v.Derive();
+
+    public IFunction Integrate() =>
+        throw new NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new NotImplementedException();
 
     public override string ToString() =>
-        $"{a}^({u})";
+        $"({u}^({v}))";
 }

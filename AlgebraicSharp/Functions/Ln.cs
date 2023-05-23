@@ -1,6 +1,6 @@
 using System;
 
-namespace AlgebraicSharp.Funtions;
+namespace AlgebraicSharp.Functions;
 
 public class Ln : IFunction
 {
@@ -13,6 +13,12 @@ public class Ln : IFunction
 
     public IFunction Derive() =>
         u.Derive() / u;
+
+    public IFunction Integrate() =>
+        throw new NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new NotImplementedException();
 
     public override string ToString() =>
         $"Ln({u})";

@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Funtions;
+namespace AlgebraicSharp.Functions;
 
 public class Cos : IFunction
 {
     private readonly IFunction u;
+
     public Cos(IFunction u) =>
         this.u = u;
 
@@ -13,6 +14,12 @@ public class Cos : IFunction
 
     public IFunction Derive() =>
         new Sin(u) * u.Derive();
+
+    public IFunction Integrate() =>
+        throw new NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new NotImplementedException();
 
     public override string ToString() =>
         $"Cos({u})";

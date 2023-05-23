@@ -1,4 +1,4 @@
-﻿namespace AlgebraicSharp.Funtions;
+﻿namespace AlgebraicSharp.Functions;
 
 public class Constant : IFunction
 {
@@ -12,6 +12,13 @@ public class Constant : IFunction
 
     public IFunction Derive() =>
         new Constant(0);
+
+    public IFunction Integrate() =>
+        throw new System.NotImplementedException();
+
+    public IFunction Simplify() =>
+        throw new System.NotImplementedException();
+
 
     public override string ToString() =>
         n.ToString();
