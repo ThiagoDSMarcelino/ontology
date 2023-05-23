@@ -1,6 +1,8 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions;
+namespace AlgebraicSharp.Functions.Trigonometry;
+
+using static Calculus;
 
 public class Cosine : IFunction
 {
@@ -13,7 +15,7 @@ public class Cosine : IFunction
         Math.Cos(u[x]);
 
     public IFunction Derive() =>
-        new Sine(u) * u.Derive();
+        sin(u) * u.Derive();
 
     public IFunction Integrate() =>
         throw new NotImplementedException();

@@ -1,24 +1,21 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions;
+namespace AlgebraicSharp.Functions.Trigonometry;
 
 using static Calculus;
 
-public class Pow : IFunction
+public class Secant : IFunction
 {
     private readonly IFunction u;
-    private readonly IFunction v;
-    public Pow(IFunction u, IFunction v)
-    {
+
+    public Secant(IFunction u) =>
         this.u = u;
-        this.v = v;
-    }
 
     public double this[double x] =>
-        Math.Pow(u[x], v[x]);
+        1 / Math.Cos(x);
 
     public IFunction Derive() =>
-        v * (u ^ (v - 1)) * u.Derive() + (u ^ v) * ln(u) * v.Derive();
+        u.Derive() * sec(u) * tg(u);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -27,5 +24,5 @@ public class Pow : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"({u}^({v}))";
+        $"sec({u})";
 }

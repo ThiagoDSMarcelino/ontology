@@ -1,25 +1,20 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions;
+namespace AlgebraicSharp.Functions.Trigonometry;
 
 using static Calculus;
 
-public class Log : IFunction
+public class Sine : IFunction
 {
     private readonly IFunction u;
-    private readonly double a;
-
-    public Log(IFunction u, double a)
-    {
+    public Sine(IFunction u) =>
         this.u = u;
-        this.a = a;
-    }
 
     public double this[double x] =>
-        Math.Log(u[x], a);
+        Math.Sin(u[x]);
 
     public IFunction Derive() =>
-        u.Derive() / u * log(e, a);
+        cos(u) * u.Derive();
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -28,5 +23,5 @@ public class Log : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"log{a}({u})";
+        $"sin({u})";
 }

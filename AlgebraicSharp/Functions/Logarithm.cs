@@ -1,18 +1,25 @@
-using System;
+﻿using System;
 
 namespace AlgebraicSharp.Functions;
 
-public class Ln : IFunction
+using static Calculus;
+
+public class Logarithm : IFunction
 {
     private readonly IFunction u;
-    public Ln(IFunction u) =>
+    private readonly IFunction a;
+
+    public Logarithm(IFunction u, IFunction a)
+    {
         this.u = u;
+        this.a = a;
+    }
 
     public double this[double x] =>
-        Math.Log(u[x]);
+        Math.Log(u[x], a[x]);
 
     public IFunction Derive() =>
-        u.Derive() / u;
+        u.Derive() / u * log(e, a);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -21,5 +28,5 @@ public class Ln : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"ln({u})";
+        $"log{a}({u})";
 }

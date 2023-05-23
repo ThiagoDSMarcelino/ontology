@@ -1,19 +1,18 @@
-﻿using System;
+using System;
 
 namespace AlgebraicSharp.Functions;
 
-public class Cosecant : IFunction
+public class NaturalLogarithm : IFunction
 {
     private readonly IFunction u;
-
-    public Cosecant(IFunction u) =>
+    public NaturalLogarithm(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        1 / Math.Sin(x);
+        Math.Log(u[x]);
 
     public IFunction Derive() =>
-        throw new NotImplementedException();
+        u.Derive() / u;
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -22,5 +21,5 @@ public class Cosecant : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"cosec({u})";
+        $"ln({u})";
 }

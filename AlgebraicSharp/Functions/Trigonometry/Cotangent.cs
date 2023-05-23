@@ -1,18 +1,18 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions;
+namespace AlgebraicSharp.Functions.Trigonometry;
 
 using static Calculus;
 
-public class Secant : IFunction
+public class Cotangent : IFunction
 {
     private readonly IFunction u;
 
-    public Secant(IFunction u) =>
+    public Cotangent(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        1 / Math.Cos(x);
+        1 / Math.Tan(x);
 
     public IFunction Derive() =>
         u.Derive() * cosec(u) * cosec(u);
@@ -24,5 +24,5 @@ public class Secant : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"sec({u})";
+        $"cosec({u})";
 }

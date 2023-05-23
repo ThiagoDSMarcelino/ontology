@@ -3,7 +3,8 @@ using System;
 
 namespace AlgebraicSharp;
 
-using AlgebraicSharp.Functions;
+using Functions.Trigonometry;
+using Functions;
 
 #pragma warning disable IDE1006
 
@@ -61,26 +62,52 @@ public static class Calculus
 
     #region Functions
 
+    #region NaturalLogarithm
+
+    public static IFunction ln(IFunction u) =>
+        new NaturalLogarithm(u);
+
+    public static IFunction ln(double u) =>
+        new NaturalLogarithm(new Constant(u));
+
+    #endregion
+
+    #region Logarithm
+    public static IFunction log(IFunction u) =>
+        new Logarithm(u, new Constant(10));
+
+    public static IFunction log(double u, IFunction a) =>
+        new Logarithm(new Constant(u), a);
+
+    public static IFunction log(IFunction u, double a) =>
+        new Logarithm(u, new Constant(a));
+
+    public static IFunction log(double u, double a) =>
+        new Logarithm(new Constant(u), new Constant(a));
+
+    #endregion
+
+    #region Trigonometry
+
     public static IFunction sin(IFunction u) =>
         new Sine(u);
 
     public static IFunction cos(IFunction u) =>
         new Cosine(u);
 
-    public static IFunction ln(IFunction u) =>
-        new Ln(u);
-
-    public static IFunction log(IFunction u) =>
-        new Log(u, 10);
-
-    public static IFunction log(IFunction u, double a) =>
-        new Log(u, a);
-    public static IFunction sec(IFunction u) =>
-        new Secant(u);
     public static IFunction tg(IFunction u) =>
         new Tangent(u);
+
+    public static IFunction cotg(IFunction u) =>
+        new Cotangent(u);
+
+    public static IFunction sec(IFunction u) =>
+        new Secant(u);
+
     public static IFunction cosec(IFunction u) =>
         new Cosecant(u);
+
+    #endregion
 
     #endregion
 

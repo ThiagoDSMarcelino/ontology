@@ -1,20 +1,24 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions;
+namespace AlgebraicSharp.Operations;
 
 using static Calculus;
 
-public class Sine : IFunction
+public class Exponentiation : IFunction
 {
     private readonly IFunction u;
-    public Sine(IFunction u) =>
+    private readonly IFunction v;
+    public Exponentiation(IFunction u, IFunction v)
+    {
         this.u = u;
+        this.v = v;
+    }
 
     public double this[double x] =>
-        Math.Sin(u[x]);
+        Math.Pow(u[x], v[x]);
 
     public IFunction Derive() =>
-        cos(u) * u.Derive();
+        v * (u ^ v - 1) * u.Derive() + (u ^ v) * ln(u) * v.Derive();
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -23,5 +27,5 @@ public class Sine : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"sin({u})";
+        $"({u}^({v}))";
 }

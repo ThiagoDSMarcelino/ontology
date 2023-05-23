@@ -171,11 +171,11 @@ public interface IFunction
     #region Pow
 
     public static IFunction operator ^(IFunction a, IFunction u) =>
-        new Pow(a, u);
+        new Exponentiation(a, u);
     public static IFunction operator ^(double a, IFunction u) =>
-        new Pow(new Constant(a), u);
+        new Exponentiation(new Constant(a), u);
     public static IFunction operator ^(IFunction a, double u) =>
-        new Pow(a, new Constant(u));
+        new Exponentiation(a, new Constant(u));
 
     #endregion
 }

@@ -1,4 +1,4 @@
-﻿namespace AlgebraicSharp.Functions;
+﻿namespace AlgebraicSharp.Operations;
 
 public class Negative : IFunction
 {

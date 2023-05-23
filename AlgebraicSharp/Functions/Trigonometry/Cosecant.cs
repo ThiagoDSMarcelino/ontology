@@ -1,21 +1,22 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions;
+namespace AlgebraicSharp.Functions.Trigonometry;
 
 using static Calculus;
 
-public class Tangent : IFunction
+public class Cosecant : IFunction
 {
     private readonly IFunction u;
 
-    public Tangent(IFunction u) =>
+    public Cosecant(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        Math.Tan(u[x]);
+        1 / Math.Sin(x);
 
     public IFunction Derive() =>
-        u.Derive() * sec(u) * sec(u);
+        u.Derive() * cosec(u) * cotg(u);
+        
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -24,5 +25,5 @@ public class Tangent : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"tg({u})";
+        $"cosec({u})";
 }
