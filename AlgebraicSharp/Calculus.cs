@@ -3,7 +3,8 @@ using System;
 
 namespace AlgebraicSharp;
 
-using Functions.Trigonometry;
+using Functions.Trigonometry.ReciprocalIdentities;
+using Functions.Trigonometry.Inverse;
 using Functions;
 
 #pragma warning disable IDE1006
@@ -62,7 +63,7 @@ public static class Calculus
 
     #region Functions
 
-    #region NaturalLogarithm
+    #region Natural Logarithm
 
     public static IFunction ln(IFunction u) =>
         new NaturalLogarithm(u);
@@ -92,8 +93,10 @@ public static class Calculus
 
     #region Trigonometry
 
+    #region Reciprocal Identities
+
     #region Sine
-    
+
     public static IFunction sin(IFunction u) =>
         new Sine(u);
     
@@ -122,16 +125,6 @@ public static class Calculus
 
     #endregion
 
-    #region Cotangent
-
-    public static IFunction cotg(IFunction u) =>
-        new Cotangent(u);
-    
-    public static IFunction cotg(double u) =>
-        new Cotangent(new Constant(u));
-
-    #endregion
-
     #region Secant
 
     public static IFunction sec(IFunction u) =>
@@ -144,11 +137,37 @@ public static class Calculus
 
     #region Cosecant
 
-    public static IFunction cosec(IFunction u) =>
+    public static IFunction csc(IFunction u) =>
         new Cosecant(u);
     
-    public static IFunction cosec(double u) =>
+    public static IFunction csc(double u) =>
         new Cosecant(new Constant(u));
+
+    #endregion
+
+    #region Cotangent
+
+    public static IFunction cot(IFunction u) =>
+        new Cotangent(u);
+
+    public static IFunction cot(double u) =>
+        new Cotangent(new Constant(u));
+
+    #endregion
+
+    #endregion
+
+    #region Inverse
+
+    #region Inverse Sine
+
+    public static IFunction arcsin(IFunction u) =>
+        new InverseSine(u);
+
+    public static IFunction arcsin(double u) =>
+        new InverseSine(new Constant(u));
+
+    #endregion
 
     #endregion
 

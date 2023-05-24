@@ -3,6 +3,7 @@
 using Operations;
 using Functions;
 using System;
+using System.Globalization;
 
 public interface IFunction
 {
@@ -16,43 +17,39 @@ public interface IFunction
 
     public static IFunction operator +(IFunction f, IFunction g)
     {
-        if (f.GetType() == typeof(Sum))
+        if (f is Sum fFunc)
         {
-            var temp = (Sum)f;
-            temp.Add(g);
+            fFunc.Add(g);
 
-            return temp;
+            return fFunc;
         }
-        else if (g.GetType() == typeof(Sum))
+        else if (g is Sum gFunc)
         {
-            var temp = (Sum)g;
-            temp.Add(f);
+            gFunc.Add(f);
 
-            return temp;
+            return gFunc;
         }
 
         return new Sum(f, g);
     }
     public static IFunction operator +(double n, IFunction f)
     {
-        if (f.GetType() == typeof(Sum))
+        if (f is Sum fFunc)
         {
-            var temp = (Sum)f;
-            temp.Add(new Constant(n));
+            fFunc.Add(new Constant(n));
 
-            return temp;
+            return fFunc;
         }
 
         return new Sum(f, new Constant(n));
     }
     public static IFunction operator +(IFunction f, double n)
     {
-        if (f.GetType() == typeof(Sum))
+        if (f is Sum fFunc)
         {
-            var temp = (Sum)f;
-            temp.Add(new Constant(n));
+            fFunc.Add(new Constant(n));
 
-            return temp;
+            return fFunc;
         }
 
         return new Sum(f, new Constant(n));

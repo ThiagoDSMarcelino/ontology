@@ -31,5 +31,5 @@ public class Multiplication : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        string.Join(" * ", functions.Select(func => func.ToString()));
+        "(" + string.Join(" * ", functions.Select(func => func.ToString())) + ")";
 }

@@ -1,11 +1,11 @@
-﻿using AlgebraicSharp.Functions;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace AlgebraicSharp.Operations;
 
 using static Calculus;
+using Functions;
 
 public class Exponentiation : IFunction
 {
@@ -14,8 +14,11 @@ public class Exponentiation : IFunction
     public Exponentiation(params IFunction[] functions) =>
         this.functions = functions.ToList();
 
+    private IFunction getExponent() =>
+        functions.Skip(1).Aggregate((IFunction)new Constant(1), (result, func) => result * func);
+
     public double this[double x] =>
-        Math.Pow(functions[0][x], functions.Skip(1).Aggregate(1d, (result, func) => result * func[x]));
+        Math.Pow(functions[0][x], getExponent()[x]);
 
     public void Add(IFunction function) =>
         functions.Add(function);
@@ -23,7 +26,7 @@ public class Exponentiation : IFunction
     public IFunction Derive()
     {
         var u = functions[0];
-        var v = functions[1];
+        var v = getExponent();
 
         return v * (u ^ v - 1) * u.Derive() + (u ^ v) * ln(u) * v.Derive();
     }
@@ -35,5 +38,5 @@ public class Exponentiation : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"({functions[0]})^({functions.Skip(1).Aggregate((IFunction)(new Constant(1)), (result, func) => result * func).ToString().Remove(0, 4)})";
+        $"{functions[0]}^{getExponent().ToString().Remove(0, 5)}";
 }

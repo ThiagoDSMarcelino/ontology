@@ -1,21 +1,21 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions.Trigonometry;
+namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
 using static Calculus;
 
-public class Tangent : IFunction
+public class Cotangent : IFunction
 {
     private readonly IFunction u;
 
-    public Tangent(IFunction u) =>
+    public Cotangent(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        Math.Tan(u[x]);
+        1 / Math.Tan(x);
 
     public IFunction Derive() =>
-        u.Derive() * sec(u) * sec(u);
+        -u.Derive() * csc(u) * csc(u);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -24,5 +24,5 @@ public class Tangent : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"tg({u})";
+        $"cotg({u})";
 }

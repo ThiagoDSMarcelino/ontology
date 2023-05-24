@@ -1,22 +1,21 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions.Trigonometry;
+namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
 using static Calculus;
 
-public class Cosecant : IFunction
+public class Secant : IFunction
 {
     private readonly IFunction u;
 
-    public Cosecant(IFunction u) =>
+    public Secant(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        1 / Math.Sin(x);
+        1 / Math.Cos(x);
 
     public IFunction Derive() =>
-        -u.Derive() * cosec(u) * cotg(u);
-        
+        u.Derive() * sec(u) * tg(u);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -25,5 +24,5 @@ public class Cosecant : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"cosec({u})";
+        $"sec({u})";
 }

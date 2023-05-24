@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlgebraicSharp.Functions.Trigonometry;
+namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
 using static Calculus;
 

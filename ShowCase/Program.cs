@@ -1,10 +1,14 @@
-﻿using System;
-using static AlgebraicSharp.Calculus;
+﻿using static AlgebraicSharp.Calculus;
+using System;
 
-double n = 2;
+double n = 0.13;
 
-var f = (x^2)^2;
+var f = arcsin(x);
+var u = x ^ 2;
+//1 / ((1 - (u ^ 2)) | 2);
+//WriteLineFunc(f, n);
 
-
-WriteLineFunc(f, n);
-//WriteLineFunc(f.Derive(), n);
+Console.WriteLine(u);
+Console.WriteLine(u[n]);
+Console.WriteLine();
+WriteLineFunc(f.Derive(), n);
