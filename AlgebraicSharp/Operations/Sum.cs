@@ -16,8 +16,17 @@ public class Sum : IFunction
     public void Add(IFunction function) =>
         functions.Add(function);
 
-    public void Add(IFunction function, int index) =>
-        functions.Insert(index, function);
+    public void Add(IFunction function, int index, bool isSubtraction = false)
+    {
+        if (isSubtraction)
+        {
+            functions.Insert(index, function);
+            functions[1] = -functions[1];
+        }
+            
+        else
+            functions.Insert(index, function);
+    }
 
     public IFunction Derive() =>
         new Sum(functions.Select(f => f.Derive()).ToArray());

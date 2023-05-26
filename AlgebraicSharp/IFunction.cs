@@ -45,20 +45,20 @@ public interface IFunction
         new Negative(f);
     public static IFunction operator -(IFunction f, IFunction g)
     {
-        if (f is Subtraction fFunc)
+        if (f is Sum fFunc)
         {
-            fFunc.Add(g);
+            fFunc.Add(-g);
 
             return fFunc;
         }
-        else if (g is Subtraction gFunc)
+        else if (g is Sum gFunc)
         {
-            gFunc.Add(f, 0);
+            gFunc.Add(f, 0, true);
 
             return gFunc;
         }
 
-        return new Subtraction(f, g);
+        return new Sum(f, -g);
     }
     public static IFunction operator -(double n, IFunction f) =>
         new Constant(n) - f;
@@ -117,9 +117,9 @@ public interface IFunction
         return new Exponentiation(a, u);
     }
     public static IFunction operator ^(double a, IFunction u) =>
-        new Constant(a) * u;
+        new Constant(a) ^ u;
     public static IFunction operator ^(IFunction a, double u) =>
-        a * new Constant(u);
+        a ^ new Constant(u);
 
     #endregion
 
