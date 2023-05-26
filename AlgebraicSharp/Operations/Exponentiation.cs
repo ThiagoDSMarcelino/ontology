@@ -15,13 +15,16 @@ public class Exponentiation : IFunction
         this.functions = functions.ToList();
 
     private IFunction getExponent() =>
-        functions.Skip(1).Aggregate((IFunction)new Constant(1), (result, func) => result * func);
+        functions.Skip(2).Aggregate(functions[1], (result, func) => result * func);
 
     public double this[double x] =>
         Math.Pow(functions[0][x], getExponent()[x]);
 
     public void Add(IFunction function) =>
         functions.Add(function);
+
+    public void Add(IFunction function, int index) =>
+        functions.Insert(index, function);
 
     public IFunction Derive()
     {
@@ -38,5 +41,5 @@ public class Exponentiation : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"{functions[0]}^{getExponent().ToString().Remove(0, 5)}";
+        $"{functions[0]}^{getExponent()}";
 }

@@ -16,6 +16,9 @@ public class Subtraction : IFunction
     public void Add(IFunction function) =>
         functions.Add(function);
 
+    public void Add(IFunction function, int index) =>
+        functions.Insert(index, function);
+
     public IFunction Derive() =>
         new Subtraction(functions.Select(f => f.Derive()).ToArray());
 

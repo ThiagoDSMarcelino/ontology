@@ -2,8 +2,6 @@
 
 namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
 
-using static Calculus;
-
 public class InverseSine : IFunction
 {
     private readonly IFunction u;

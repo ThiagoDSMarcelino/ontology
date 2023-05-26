@@ -1,14 +1,8 @@
 ﻿using static AlgebraicSharp.Calculus;
-using System;
 
-double n = 0.13;
+double n = 0.5;
 
-var f = arcsin(x);
-var u = x ^ 2;
-//1 / ((1 - (u ^ 2)) | 2);
-//WriteLineFunc(f, n);
+var f = log(x);
 
-Console.WriteLine(u);
-Console.WriteLine(u[n]);
-Console.WriteLine();
+WriteLineFunc(f, n);
 WriteLineFunc(f.Derive(), n);

@@ -2,8 +2,6 @@
 
 using Operations;
 using Functions;
-using System;
-using System.Globalization;
 
 public interface IFunction
 {
@@ -15,7 +13,7 @@ public interface IFunction
 
     #region Sum
 
-    public static IFunction operator +(IFunction f, IFunction g)
+    private static IFunction sum(IFunction f, IFunction g)
     {
         if (f is Sum fFunc)
         {
@@ -25,35 +23,19 @@ public interface IFunction
         }
         else if (g is Sum gFunc)
         {
-            gFunc.Add(f);
+            gFunc.Add(f, 0);
 
             return gFunc;
         }
 
         return new Sum(f, g);
     }
-    public static IFunction operator +(double n, IFunction f)
-    {
-        if (f is Sum fFunc)
-        {
-            fFunc.Add(new Constant(n));
-
-            return fFunc;
-        }
-
-        return new Sum(f, new Constant(n));
-    }
-    public static IFunction operator +(IFunction f, double n)
-    {
-        if (f is Sum fFunc)
-        {
-            fFunc.Add(new Constant(n));
-
-            return fFunc;
-        }
-
-        return new Sum(f, new Constant(n));
-    }
+    public static IFunction operator +(IFunction f, IFunction g) =>
+        sum(f, g);
+    public static IFunction operator +(double n, IFunction f) =>
+        sum(new Constant(n), f);
+    public static IFunction operator +(IFunction f, double n) =>
+        sum(f, new Constant(n));
 
     #endregion
 
@@ -63,47 +45,25 @@ public interface IFunction
         new Negative(f);
     public static IFunction operator -(IFunction f, IFunction g)
     {
-        if (f.GetType() == typeof(Subtraction))
+        if (f is Subtraction fFunc)
         {
-            var temp = (Subtraction)f;
-            temp.Add(g);
+            fFunc.Add(g);
 
-            return temp;
+            return fFunc;
         }
-        else if (g.GetType() == typeof(Subtraction))
+        else if (g is Subtraction gFunc)
         {
-            var temp = (Subtraction)g;
-            temp.Add(f);
+            gFunc.Add(f, 0);
 
-            return temp;
+            return gFunc;
         }
 
         return new Subtraction(f, g);
     }
-    public static IFunction operator -(double n, IFunction f)
-    {
-        if (f.GetType() == typeof(Subtraction))
-        {
-            var temp = (Subtraction)f;
-            temp.Add(new Constant(n));
-
-            return temp;
-        }
-
-        return new Subtraction(f, new Constant(n));
-    }
-    public static IFunction operator -(IFunction f, double n)
-    {
-        if (f.GetType() == typeof(Subtraction))
-        {
-            var temp = (Subtraction)f;
-            temp.Add(new Constant(n));
-
-            return temp;
-        }
-
-        return new Subtraction(f, new Constant(n));
-    }
+    public static IFunction operator -(double n, IFunction f) =>
+        new Constant(n) - f;
+    public static IFunction operator -(IFunction f, double n) =>
+        f - new Constant(n);
 
     #endregion
 
@@ -111,47 +71,25 @@ public interface IFunction
 
     public static IFunction operator *(IFunction f, IFunction g)
     {
-        if (f.GetType() == typeof(Multiplication))
+        if (f is Multiplication fMult)
         {
-            var temp = (Multiplication)f;
-            temp.Add(g);
+            fMult.Add(g);
 
-            return temp;
+            return fMult;
         }
-        else if (g.GetType() == typeof(Multiplication))
+        else if (g is Multiplication gMult)
         {
-            var temp = (Multiplication)g;
-            temp.Add(f);
+            gMult.Add(f, 0);
 
-            return temp;
+            return gMult;
         }
         
         return new Multiplication(f, g);
     }
-    public static IFunction operator *(double n, IFunction f)
-    {
-        if (f.GetType() == typeof(Multiplication))
-        {
-            var temp = (Multiplication)f;
-            temp.Add(new Constant(n));
-
-            return temp;
-        }
-
-        return new Multiplication(f, new Constant(n));
-    }
-    public static IFunction operator *(IFunction f, double n)
-    {
-        if (f.GetType() == typeof(Multiplication))
-        {
-            var temp = (Multiplication)f;
-            temp.Add(new Constant(n));
-
-            return temp;
-        }
-
-        return new Multiplication(f, new Constant(n));
-    }
+    public static IFunction operator *(double n, IFunction f) =>
+        new Constant(n) * f;
+    public static IFunction operator *(IFunction f, double n) =>
+        f * new Constant(n);
 
     #endregion
 
@@ -169,30 +107,19 @@ public interface IFunction
     #region Exponentiation
     public static IFunction operator ^(IFunction a, IFunction u)
     {
-        if (a.GetType() == typeof(Exponentiation))
+        if (a is Exponentiation pow)
         {
-            var temp = (Exponentiation)a;
-            temp.Add(u);
+            pow.Add(u);
 
-            return temp;
+            return pow;
         }
 
         return new Exponentiation(a, u);
     }
     public static IFunction operator ^(double a, IFunction u) =>
-        new Exponentiation(new Constant(a), u);
-    public static IFunction operator ^(IFunction a, double u)
-    {
-        if (a.GetType() == typeof(Exponentiation))
-        {
-            var temp = (Exponentiation)a;
-            temp.Add(new Constant(u));
-
-            return temp;
-        }
-
-        return new Exponentiation(a, new Constant(u));
-    }
+        new Constant(a) * u;
+    public static IFunction operator ^(IFunction a, double u) =>
+        a * new Constant(u);
 
     #endregion
 
@@ -201,9 +128,9 @@ public interface IFunction
     public static IFunction operator |(IFunction a, IFunction u) =>
         new Exponentiation(a, 1d / u);
     public static IFunction operator |(double a, IFunction u) =>
-        new Exponentiation(new Constant(a), 1d / u);
+        new Constant(a) | u;
     public static IFunction operator |(IFunction a, double u) =>
-        new Exponentiation(a, new Constant(1d / u));
+        a | new Constant(u);
 
     #endregion
 }

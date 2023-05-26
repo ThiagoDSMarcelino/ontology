@@ -6,20 +6,20 @@ using static Calculus;
 
 public class Logarithm : IFunction
 {
-    private readonly IFunction a;
     private readonly IFunction u;
+    private readonly IFunction newBase;
 
-    public Logarithm(IFunction a, IFunction u)
+    public Logarithm(IFunction u, IFunction newBase)
     {
-        this.a = a;
         this.u = u;
+        this.newBase = newBase;
     }
 
     public double this[double x] =>
-        Math.Log(u[x], a[x]);
+        Math.Log(u[x], newBase[x]);
 
     public IFunction Derive() =>
-        u.Derive() / u * log(a, e);
+        u.Derive() / u * log(newBase, e);
 
     public IFunction Integrate() =>
         throw new NotImplementedException();
@@ -28,5 +28,5 @@ public class Logarithm : IFunction
         throw new NotImplementedException();
 
     public override string ToString() =>
-        $"log{a}({u})";
+        $"log{newBase}({u})";
 }

@@ -17,6 +17,9 @@ public class Multiplication : IFunction
     public void Add(IFunction function) =>
         functions.Add(function);
 
+    public void Add(IFunction function, int index) =>
+        functions.Insert(index, function);
+
     public IFunction Derive() =>
         new Sum(functions.Select(
             (_, i) => new Multiplication(functions.Select(
