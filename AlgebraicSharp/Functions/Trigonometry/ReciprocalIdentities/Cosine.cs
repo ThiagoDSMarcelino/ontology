@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
@@ -12,16 +12,16 @@ public class Cosine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        Math.Cos(u[x]);
+        Cos(u[x]);
 
     public IFunction Derive() =>
         -u.Derive() * sin(u);
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"cos({u})";

@@ -2,7 +2,7 @@
 
 double n = 10;
 
-var f = ln(x - 1);
+var f = x - x + x;
  
 WriteLineFunc(f, n);
 WriteLineFunc(f.Derive(), n);

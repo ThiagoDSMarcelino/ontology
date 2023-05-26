@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
@@ -12,16 +12,16 @@ public class Cotangent : IFunction
         this.u = u;
 
     public double this[double x] =>
-        1 / Math.Tan(x);
+        1 / Tan(x);
 
     public IFunction Derive() =>
         -u.Derive() * csc(u) * csc(u);
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"cotg({u})";

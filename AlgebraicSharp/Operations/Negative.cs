@@ -20,5 +20,5 @@ public class Negative : IFunction
         throw new System.NotImplementedException();
 
     public override string ToString() =>
-        "-" + u.ToString();
+        "(-" + u.ToString() + ")";
 }

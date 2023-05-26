@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using static System.Math;
 using System.Linq;
-using System;
+
 
 namespace AlgebraicSharp.Operations;
 
@@ -17,7 +18,7 @@ public class Exponentiation : IFunction
         functions.Skip(2).Aggregate(functions[1], (result, func) => result * func);
 
     public double this[double x] =>
-        Math.Pow(functions[0][x], getExponent()[x]);
+        Pow(functions[0][x], getExponent()[x]);
 
     public void Add(IFunction function) =>
         functions.Add(function);
@@ -34,10 +35,10 @@ public class Exponentiation : IFunction
     }
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"{functions[0]}^{getExponent()}";

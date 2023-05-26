@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
 
@@ -9,16 +9,16 @@ public class InverseSine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        Math.Atan(u[x] / Math.Sqrt(-u[x] * u[x] + 1));
+        Atan(u[x] / Sqrt(-u[x] * u[x] + 1));
 
     public IFunction Derive() =>
         1 / ((1 - (u^2)) | 2);
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"arcsin({u})";

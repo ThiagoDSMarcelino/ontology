@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
@@ -11,16 +11,16 @@ public class Sine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        Math.Sin(u[x]);
+        Sin(u[x]);
 
     public IFunction Derive() =>
         cos(u) * u.Derive();
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"sin({u})";

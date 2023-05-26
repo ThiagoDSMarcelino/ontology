@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
@@ -12,16 +12,16 @@ public class Secant : IFunction
         this.u = u;
 
     public double this[double x] =>
-        1 / Math.Cos(x);
+        1 / Cos(x);
 
     public IFunction Derive() =>
         u.Derive() * sec(u) * tg(u);
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"sec({u})";

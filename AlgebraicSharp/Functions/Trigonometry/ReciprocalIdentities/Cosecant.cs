@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
@@ -12,17 +12,17 @@ public class Cosecant : IFunction
         this.u = u;
 
     public double this[double x] =>
-        1 / Math.Sin(x);
+        1 / Sin(x);
 
     public IFunction Derive() =>
         -u.Derive() * csc(u) * cot(u);
 
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"cosec({u})";

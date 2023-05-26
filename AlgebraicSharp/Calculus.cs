@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using System;
+﻿using static System.Math;
+using System.Linq;
 
 namespace AlgebraicSharp;
 
@@ -42,18 +42,18 @@ public static class Calculus
     {
         get
         {
-            euler ??= new(Math.E);
+            euler ??= new(E);
 
             return euler;
         }
     }
 
     private static Constant pi = null;
-    public static IFunction PI
+    public static IFunction Pi
     { 
         get
         {
-            pi ??= new(Math.PI);
+            pi ??= new(PI);
 
             return pi;
         }
@@ -178,9 +178,9 @@ public static class Calculus
     #region Console
 
     public static void WriteFunc(IFunction func, double x, int derivative = 0) =>
-        Console.Write(GetFunc(func, x, derivative));
+        System.Console.Write(GetFunc(func, x, derivative));
     public static void WriteLineFunc(IFunction func, double x, int derivative = 0) =>
-        Console.WriteLine(GetFunc(func, x, derivative));
+        System.Console.WriteLine(GetFunc(func, x, derivative));
     public static string GetFunc(IFunction func, double x, int derivative) =>
         $"f{getDerivative(derivative)}(x) = {func}\nf{getDerivative(derivative)}({x}) = {func[x]}";
     private static string getDerivative(int derivative) =>

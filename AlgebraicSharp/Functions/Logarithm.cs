@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Math;
 
 namespace AlgebraicSharp.Functions;
 
@@ -16,16 +16,16 @@ public class Logarithm : IFunction
     }
 
     public double this[double x] =>
-        Math.Log(u[x], newBase[x]);
+        Log(u[x], newBase[x]);
 
     public IFunction Derive() =>
         u.Derive() / u * log(newBase, e);
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         $"log{newBase}({u})";

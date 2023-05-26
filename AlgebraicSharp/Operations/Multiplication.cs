@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace AlgebraicSharp.Operations;
 
@@ -28,10 +27,10 @@ public class Multiplication : IFunction
         ).ToArray());
 
     public IFunction Integrate() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public IFunction Simplify() =>
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
 
     public override string ToString() =>
         "(" + string.Join(" * ", functions.Select(func => func.ToString())) + ")";
