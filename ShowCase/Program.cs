@@ -1,8 +1,8 @@
 ﻿using static AlgebraicSharp.Calculus;
 
-double n = 4;
+double n = 10;
 
-var f = x - (x - 5);
+var f = ln(x - 1);
  
 WriteLineFunc(f, n);
 WriteLineFunc(f.Derive(), n);

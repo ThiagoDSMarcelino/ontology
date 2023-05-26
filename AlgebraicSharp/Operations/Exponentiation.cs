@@ -5,7 +5,6 @@ using System;
 namespace AlgebraicSharp.Operations;
 
 using static Calculus;
-using Functions;
 
 public class Exponentiation : IFunction
 {

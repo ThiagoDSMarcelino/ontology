@@ -66,10 +66,10 @@ public static class Calculus
     #region Natural Logarithm
 
     public static IFunction ln(IFunction u) =>
-        new NaturalLogarithm(u);
+        new Logarithm(u, e);
 
     public static IFunction ln(double u) =>
-        new NaturalLogarithm(new Constant(u));
+        new Logarithm(new Constant(u), e);
 
     #endregion
 
@@ -78,16 +78,16 @@ public static class Calculus
         new Logarithm(u, new Constant(10));
 
     public static IFunction log(IFunction newBase, IFunction u) =>
-        new Logarithm(newBase, u);
+        new Logarithm(u, newBase);
 
     public static IFunction log(double newBase, IFunction u) =>
-        new Logarithm(new Constant(newBase), u);
+        new Logarithm(u, new Constant(newBase));
 
     public static IFunction log(IFunction newBase, double u) =>
-        new Logarithm(newBase, new Constant(u));
+        new Logarithm(new Constant(u), newBase);
 
     public static IFunction log(double newBase, double u) =>
-        new Logarithm(new Constant(newBase), new Constant(u));
+        new Logarithm(new Constant(u), new Constant(newBase));
 
     #endregion
 
