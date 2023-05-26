@@ -11,7 +11,7 @@ public class Multiplication : IFunction
         this.functions = functions.ToList();
 
     public double this[double x] =>
-        functions.Aggregate(1d, (result, func) => result * func[x]);
+        functions.Skip(1).Aggregate(functions[0][x], (result, func) => result * func[x]);
 
     public void Add(IFunction function) =>
         functions.Add(function);

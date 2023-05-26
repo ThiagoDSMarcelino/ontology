@@ -126,7 +126,7 @@ public interface IFunction
     #region Root
 
     public static IFunction operator |(IFunction a, IFunction u) =>
-        new Exponentiation(a, 1d / u);
+        new Exponentiation(a, 1 / u);
     public static IFunction operator |(double a, IFunction u) =>
         new Constant(a) | u;
     public static IFunction operator |(IFunction a, double u) =>
