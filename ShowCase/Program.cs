@@ -1,9 +1,8 @@
 ﻿using static AlgebraicSharp.Calculus;
 
-double n = 0.13;
+double n = 2;
 
-var f = arcsin(x);
+var f = arccsc(x);
 
-//WriteLineFunc(f, n);
+WriteLineFunc(f, n);
 WriteLineFunc(f.Derive(), n);
-System.Console.ReadKey(true);

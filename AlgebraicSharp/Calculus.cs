@@ -169,6 +169,56 @@ public static class Calculus
 
     #endregion
 
+    #region Inverse Cosine
+
+    public static IFunction arccos(IFunction u) =>
+        new InverseCosine(u);
+
+    public static IFunction arccos(double u) =>
+        new InverseCosine(new Constant(u));
+
+    #endregion
+
+    #region Inverse Tangent
+
+    public static IFunction arctg(IFunction u) =>
+        new InverseTangent(u);
+
+    public static IFunction arctg(double u) =>
+        new InverseTangent(new Constant(u));
+
+    #endregion
+
+    #region Inverse Secant
+
+    public static IFunction arcsec(IFunction u) =>
+        new InverseSecant(u);
+
+    public static IFunction arcsec(double u) =>
+        new InverseSecant(new Constant(u));
+
+    #endregion
+
+    #region Inverse Cosecant
+
+    public static IFunction arccsc(IFunction u) =>
+        new InverseCosecant(u);
+
+    public static IFunction arccsc(double u) =>
+        new InverseCosecant(new Constant(u));
+
+    #endregion
+
+    #region Inverse Cotangent
+
+    public static IFunction arccot(IFunction u) =>
+        new InverseCotangent(u);
+
+    public static IFunction arccot(double u) =>
+        new InverseCotangent(new Constant(u));
+
+    #endregion
+
     #endregion
 
     #endregion

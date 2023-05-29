@@ -69,23 +69,8 @@ public interface IFunction
 
     #region Multiplication
 
-    public static IFunction operator *(IFunction f, IFunction g)
-    {
-        if (f is Multiplication fMult)
-        {
-            fMult.Add(g);
-
-            return fMult;
-        }
-        else if (g is Multiplication gMult)
-        {
-            gMult.Add(f, 0);
-
-            return gMult;
-        }
-        
-        return new Multiplication(f, g);
-    }
+    public static IFunction operator *(IFunction f, IFunction g) =>
+        new Multiplication(f, g);
     public static IFunction operator *(double n, IFunction f) =>
         new Constant(n) * f;
     public static IFunction operator *(IFunction f, double n) =>

@@ -1,16 +1,18 @@
-﻿namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
+﻿using static System.Math;
 
-public class InverseSine : IFunction
+namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
+
+public class InverseSecant : IFunction
 {
     private readonly IFunction u;
-    public InverseSine(IFunction u) =>
+    public InverseSecant(IFunction u) =>
         this.u = u;
 
     public double this[double x] =>
-        System.Math.Asin(x);
+        2 * Atan(1) - Atan(Sign(x) / Sqrt(x * x - 1));
 
     public IFunction Derive() =>
-        u.Derive() / ((1 - (u^2)) | 2);
+        u.Derive() / (u * (((u ^ 2) - 1) | 2));
 
     public IFunction Integrate() =>
         throw new System.NotImplementedException();
@@ -19,5 +21,5 @@ public class InverseSine : IFunction
         throw new System.NotImplementedException();
 
     public override string ToString() =>
-        $"arcsin({u})";
+        $"arcsec({u})";
 }
