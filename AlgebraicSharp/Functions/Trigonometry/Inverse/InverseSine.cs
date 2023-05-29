@@ -1,4 +1,6 @@
-﻿namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
+﻿using static System.Math;
+
+namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
 
 public class InverseSine : IFunction
 {
@@ -7,7 +9,7 @@ public class InverseSine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        System.Math.Asin(x);
+        Asin(x);
 
     public IFunction Derive() =>
         u.Derive() / ((1 - (u^2)) | 2);

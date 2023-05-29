@@ -1,4 +1,6 @@
-﻿namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
+﻿using static System.Math;
+
+namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
 
 public class InverseCosine : IFunction
 {
@@ -7,7 +9,7 @@ public class InverseCosine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        System.Math.Acos(x);
+        Acos(x);
 
     public IFunction Derive() =>
         -u.Derive() / ((1 - (u ^ 2)) | 2);

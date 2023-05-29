@@ -1,4 +1,6 @@
-﻿namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
+﻿using static System.Math;
+
+namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
 
 public class InverseTangent : IFunction
 {
@@ -7,7 +9,7 @@ public class InverseTangent : IFunction
         this.u = u;
 
     public double this[double x] =>
-        System.Math.Atan(x);
+        Atan(x);
 
     public IFunction Derive() =>
         u.Derive() / (1 + (u ^ 2));

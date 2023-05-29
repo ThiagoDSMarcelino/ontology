@@ -1,7 +1,6 @@
-﻿namespace AlgebraicSharp;
+﻿namespace AlgebraicSharp.Functions;
 
 using Operations;
-using Functions;
 
 public interface IFunction
 {

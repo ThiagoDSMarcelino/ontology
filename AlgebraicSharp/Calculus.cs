@@ -238,5 +238,3 @@ public static class Calculus
 
     #endregion
 }
-
-#pragma warning restore IDE1006

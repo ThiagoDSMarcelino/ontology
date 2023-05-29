@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AlgebraicSharp.Operations;
+namespace AlgebraicSharp.Functions.Operations;
 
 public class Sum : IFunction
 {
@@ -23,7 +23,7 @@ public class Sum : IFunction
             functions.Insert(index, function);
             functions[1] = -functions[1];
         }
-            
+
         else
             functions.Insert(index, function);
     }

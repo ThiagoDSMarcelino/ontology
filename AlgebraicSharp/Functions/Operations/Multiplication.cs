@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AlgebraicSharp.Operations;
+namespace AlgebraicSharp.Functions.Operations;
 
 public class Multiplication : IFunction
 {

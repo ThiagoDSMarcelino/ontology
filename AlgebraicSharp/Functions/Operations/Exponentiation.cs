@@ -2,8 +2,7 @@
 using static System.Math;
 using System.Linq;
 
-
-namespace AlgebraicSharp.Operations;
+namespace AlgebraicSharp.Functions.Operations;
 
 using static Calculus;
 

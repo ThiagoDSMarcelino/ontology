@@ -1,8 +1,9 @@
-﻿using static AlgebraicSharp.Calculus;
+﻿using AlgebraicSharp.Functions;
+using static AlgebraicSharp.Calculus;
 
 double n = 2;
 
-var f = arccsc(x);
+IFunction f = 2;
 
 WriteLineFunc(f, n);
 WriteLineFunc(f.Derive(), n);
