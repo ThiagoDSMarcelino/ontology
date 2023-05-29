@@ -6,6 +6,7 @@ namespace AlgebraicSharp;
 using Functions.Trigonometry.ReciprocalIdentities;
 using Functions.Trigonometry.Inverse;
 using Functions;
+using Matrix;
 
 #pragma warning disable IDE1006
 
@@ -222,6 +223,14 @@ public static class Calculus
     #endregion
 
     #endregion
+
+    #endregion
+
+    #region Matrix
+    public static IMatrix GenerateMatrix(int rows, int columns) =>
+        new ZeroMatrix(rows, columns);
+    public static IMatrix GenerateMatrix(int rows, int columns, IFunction u) =>
+        new ZeroMatrix(rows, columns);
 
     #endregion
 

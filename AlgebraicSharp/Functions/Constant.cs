@@ -19,6 +19,9 @@ public class Constant : IFunction
     public IFunction Simplify() =>
         throw new System.NotImplementedException();
 
+    public static implicit operator Constant(double x) =>
+        new(x);
+
     public override string ToString() =>
         n.ToString();
 }
