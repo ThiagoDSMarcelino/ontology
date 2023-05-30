@@ -2,9 +2,9 @@
 
 public interface ICalculus<T>
 {
-    public T Derive();
+    T Derive();
 
-    public T Integrate();
+    T Integrate();
 
-    public T Simplify();
+    T Simplify();
 }
