@@ -5,25 +5,19 @@ namespace AlgebraicSharp.Matrix;
 
 using Functions;
 
-public abstract class Matrix : IMatrix, IEnumerable<IFunction>
+public abstract class Matrix : IEnumerable<IFunction>
 {
-    public int Row { get; protected set; }
+    public int Rows { get; protected set; }
 
     public int Columns { get; protected set; }
     
     public abstract char Symbol { get; set; }
 
-    public IMatrix this[double x] =>
+    public Matrix this[double x] =>
         throw new System.NotImplementedException();
 
     public IFunction this[int row, int col] =>
         throw new System.NotImplementedException();
-
-    public abstract IMatrix Derive();
-
-    public abstract IMatrix Integrate();
-
-    public abstract IMatrix Simplify();
 
     public abstract override string ToString();
 

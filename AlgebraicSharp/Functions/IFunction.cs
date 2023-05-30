@@ -2,13 +2,9 @@
 
 using Operations;
 
-public interface IFunction
+public interface IFunction : ICalculus<IFunction>
 {
     double this[double x] { get; }
-
-    IFunction Derive();
-    IFunction Integrate();
-    IFunction Simplify();
 
     #region Sum
 

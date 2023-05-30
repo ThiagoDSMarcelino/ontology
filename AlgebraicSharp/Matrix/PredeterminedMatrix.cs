@@ -9,25 +9,45 @@ public abstract class PredeterminedMatrix : Matrix
 {
     protected abstract IFunction value { get; set; }
 
-    public new IFunction this[int row, int col] =>
-        value;
+    public new IFunction this[int row, int col]
+    {
+        get
+        {
+            if (row < 0 || row > Rows ||
+                col < 0 || col > Columns)
+                throw new System.IndexOutOfRangeException();
 
-    public abstract override IMatrix Derive();
+            if (value == null)
+                throw new System.NullReferenceException();
+            
+            return value;
+        }
+    }
 
-    public abstract override IMatrix Integrate();
 
-    public abstract override IMatrix Simplify();
+    public abstract Matrix Derive();
+
+    public abstract Matrix Integrate();
+
+    public abstract Matrix Simplify();
 
     public override string ToString()
     {
-        var count = Row.ToString().Length + Columns.ToString().Length + 5;
-        StringBuilder matrix = new(count + Row + 2);
+        int
+            count = Rows.ToString().Length + Columns.ToString().Length + 5,
+            middle = Rows / 2;
 
-        for (int i = 0; i < Columns; i++)
+        if (Rows % 2 == 0)
+            middle--;
+        
+        StringBuilder matrix = new();
+
+        for (int i = 0; i < Rows; i++)
         {
-            var space = i != Row / 2 ? new string(' ', count) : $"{Symbol}{Row}x{Columns} = ";
-            var row = "|" + string.Join(' ', Enumerable.Repeat(value.ToString(), Row)) + "|";
-            var newLine = i == Columns - 1 ? string.Empty : "\n";
+            string
+                space = i == middle ? $"{Symbol}{Rows}x{Columns} = " : new string(' ', count),
+                row = "|" + string.Join(' ', Enumerable.Repeat(value.ToString(), Columns)) + "|",
+                newLine = i == Rows - 1 ? string.Empty : "\n";
 
             matrix.Append(space + row + newLine);
         }

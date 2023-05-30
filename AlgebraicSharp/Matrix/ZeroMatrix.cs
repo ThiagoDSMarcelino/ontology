@@ -9,25 +9,25 @@ public class ZeroMatrix : PredeterminedMatrix
 
     internal ZeroMatrix(int row, int columns)
     {
-        Row = row;
+        Rows = row;
         Columns = columns;
     }
     internal ZeroMatrix(int row, int columns, char symbol)
     {
-        Row = row;
+        Rows = row;
         Columns = columns;
         Symbol = symbol;
     }
 
-    public new IMatrix this[double x] =>
+    public new Matrix this[double x] =>
         this;
 
-    public override IMatrix Derive() =>
+    public override Matrix Derive() =>
         this;
 
-    public override IMatrix Integrate() =>
+    public override Matrix Integrate() =>
         throw new System.NotImplementedException();
 
-    public override IMatrix Simplify() =>
+    public override Matrix Simplify() =>
         throw new System.NotImplementedException();
 }

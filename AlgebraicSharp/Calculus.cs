@@ -227,9 +227,9 @@ public static class Calculus
     #endregion
 
     #region Matrix
-    public static IMatrix GenerateMatrix(int rows, int columns) =>
+    public static ZeroMatrix GenerateMatrix(int rows, int columns) =>
         new ZeroMatrix(rows, columns);
-    public static IMatrix GenerateMatrix(int rows, int columns, IFunction u) =>
+    public static ZeroMatrix GenerateMatrix(int rows, int columns, IFunction u) =>
         new ZeroMatrix(rows, columns);
 
     #endregion
