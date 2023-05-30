@@ -1,8 +1,9 @@
-﻿using AlgebraicSharp.Functions;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 
 namespace AlgebraicSharp.Matrix;
+
+using Functions;
 
 public abstract class PredeterminedMatrix : Matrix
 {
@@ -24,13 +25,13 @@ public abstract class PredeterminedMatrix : Matrix
 
         for (int i = 0; i < Columns; i++)
         {
-            var space = new string(' ', i == 0 ? 0 : count);
+            var space = i != Row / 2 ? new string(' ', count) : $"{Symbol}{Row}x{Columns} = ";
             var row = "|" + string.Join(' ', Enumerable.Repeat(value.ToString(), Row)) + "|";
             var newLine = i == Columns - 1 ? string.Empty : "\n";
 
             matrix.Append(space + row + newLine);
         }
 
-        return $"{Symbol}{Row}x{Columns} = {matrix}";
+        return matrix.ToString();
     }
 }

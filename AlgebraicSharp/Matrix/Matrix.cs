@@ -5,7 +5,7 @@ namespace AlgebraicSharp.Matrix;
 
 using Functions;
 
-public abstract class Matrix : IMatrix, IEnumerable
+public abstract class Matrix : IMatrix, IEnumerable<IFunction>
 {
     public int Row { get; protected set; }
 
@@ -26,7 +26,7 @@ public abstract class Matrix : IMatrix, IEnumerable
     public abstract IMatrix Simplify();
 
     public abstract override string ToString();
-    
+
     public IEnumerator<IFunction> GetEnumerator() =>
         throw new System.NotImplementedException();
 

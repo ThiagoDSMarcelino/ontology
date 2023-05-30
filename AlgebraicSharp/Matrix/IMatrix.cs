@@ -4,7 +4,7 @@ namespace AlgebraicSharp.Matrix;
 
 using Functions;
 
-public interface IMatrix : IEnumerable<IFunction>
+public interface IMatrix
 {
     public IMatrix this[double x] { get; }
     public IFunction this[int row, int col] { get; }
