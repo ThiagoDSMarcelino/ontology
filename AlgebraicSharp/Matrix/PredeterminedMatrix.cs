@@ -4,7 +4,7 @@ namespace AlgebraicSharp.Matrix;
 
 public abstract class PredeterminedMatrix : Matrix
 {
-    protected abstract double value { get; set; }
+    protected abstract double value { get; }
 
     public override double this[int row, int col]
     {

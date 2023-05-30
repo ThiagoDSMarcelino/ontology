@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Text;
 
 namespace AlgebraicSharp.Matrix;
 
@@ -17,12 +16,16 @@ public abstract class MatrixFunction : Matrix
         for (int i = 0; i < matrix.Length; i++)
             matrix[i] = new IFunction[columns];
         
+        Rows = rows;
+        Columns = columns;
         values = matrix;
         Symbol = symbol;
     }
 
     public MatrixFunction(IFunction[][] matrix, char symbol)
     {
+        Rows = matrix.Length;
+        Columns = matrix[0].Length;
         values = matrix;
         Symbol = symbol;
     }

@@ -1,22 +1,17 @@
 ﻿namespace AlgebraicSharp.Matrix;
 
-public class ZeroMatrix : PredeterminedMatrix
+public class UnitMatrix : PredeterminedMatrix
 {
-    public override char Symbol { get; set; } = '0';
-    protected override double value
-    {
-        get
-        {
-            return 0;
-        }
-    }
+    public override char Symbol { get; set; }
 
-    internal ZeroMatrix(int rows, int columns)
+    protected override double value => 0;
+
+    internal UnitMatrix(int rows, int columns)
     {
         Rows = rows;
         Columns = columns;
     }
-    internal ZeroMatrix(int rows, int columns, char symbol)
+    internal UnitMatrix(int rows, int columns, char symbol)
     {
         Rows = rows;
         Columns = columns;
