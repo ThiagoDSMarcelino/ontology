@@ -1,6 +1,4 @@
-﻿using static System.Math;
-
-namespace AlgebraicSharp.Functions;
+﻿namespace AlgebraicSharp.Functions;
 
 using static Calculus;
 

@@ -1,6 +1,4 @@
-﻿using static System.Math;
-
-namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
+﻿namespace AlgebraicSharp.Functions.Trigonometry.Inverse;
 
 public class InverseSecant : IFunction
 {

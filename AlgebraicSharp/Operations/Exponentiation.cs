@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using static System.Math;
-using System.Linq;
-
-
-namespace AlgebraicSharp.Operations;
+﻿namespace AlgebraicSharp.Operations;
 
 using static Calculus;
 

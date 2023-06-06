@@ -1,7 +1,4 @@
-﻿using static System.Math;
-using System.Linq;
-
-namespace AlgebraicSharp;
+﻿namespace AlgebraicSharp;
 
 using Functions.Trigonometry.ReciprocalIdentities;
 using Functions.Trigonometry.Inverse;

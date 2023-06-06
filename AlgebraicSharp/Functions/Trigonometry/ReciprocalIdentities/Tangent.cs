@@ -1,6 +1,4 @@
-﻿using static System.Math;
-
-namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
+﻿namespace AlgebraicSharp.Functions.Trigonometry.ReciprocalIdentities;
 
 using static Calculus;
 
