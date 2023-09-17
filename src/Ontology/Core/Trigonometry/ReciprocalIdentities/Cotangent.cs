@@ -10,16 +10,10 @@ public class Cotangent : IFunction
         this.u = u;
 
     public double this[double x] =>
-        1 / Tan(x);
+        1 / Math.Tan(x);
 
     public IFunction Derive() =>
-        -u.Derive() * csc(u) * csc(u);
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
+        -u.Derive() * Csc(u) * Csc(u);
 
     public override string ToString() =>
         $"cotg({u})";

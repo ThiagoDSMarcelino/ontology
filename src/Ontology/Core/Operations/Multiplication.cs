@@ -23,12 +23,6 @@ public class Multiplication : IFunction
             ).ToArray())
         ).ToArray());
 
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
-
     public override string ToString() =>
         "(" + string.Join(" * ", functions.Select(func => func.ToString())) + ")";
 }

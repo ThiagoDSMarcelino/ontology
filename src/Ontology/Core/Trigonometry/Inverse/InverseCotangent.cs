@@ -1,5 +1,7 @@
 ﻿namespace Ontology.Functions.Trigonometry.Inverse;
 
+using static Calculus;
+
 public class InverseCotangent : IFunction
 {
     private readonly IFunction u;
@@ -7,16 +9,10 @@ public class InverseCotangent : IFunction
         this.u = u;
 
     public double this[double x] =>
-        2 * Atan(1) - Atan(x);
+        2 * Math.Atan(1) - Math.Atan(x);
 
     public IFunction Derive() =>
-        -u.Derive() / (1 + (u ^ 2));
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
+        -u.Derive() / (1 + Pow(u, 2));
 
     public override string ToString() =>
         $"arccot({u})";

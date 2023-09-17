@@ -1,5 +1,7 @@
 ﻿namespace Ontology.Functions.Trigonometry.Inverse;
 
+using static Calculus;
+
 public class InverseCosine : IFunction
 {
     private readonly IFunction u;
@@ -7,16 +9,10 @@ public class InverseCosine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        System.Math.Acos(x);
+        Math.Acos(x);
 
     public IFunction Derive() =>
-        -u.Derive() / ((1 - (u ^ 2)) | 2);
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
+        -u.Derive() / Sqrt(1 - Pow(u, 2), 2);
 
     public override string ToString() =>
         $"arccos({u})";

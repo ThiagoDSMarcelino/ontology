@@ -1,5 +1,7 @@
 ﻿namespace Ontology.Functions.Trigonometry.Inverse;
 
+using static Calculus;
+
 public class InverseSine : IFunction
 {
     private readonly IFunction u;
@@ -7,17 +9,10 @@ public class InverseSine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        System.Math.Asin(x);
+        Math.Asin(x);
 
     public IFunction Derive() =>
-        u.Derive() / ((1 - (u^2)) | 2);
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
-
+        u.Derive() / Sqrt(1 - Pow(u, 2), 2);
     public override string ToString() =>
         $"arcsin({u})";
 }

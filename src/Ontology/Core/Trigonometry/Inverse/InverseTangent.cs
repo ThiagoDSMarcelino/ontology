@@ -1,5 +1,7 @@
 ﻿namespace Ontology.Functions.Trigonometry.Inverse;
 
+using static Calculus;
+
 public class InverseTangent : IFunction
 {
     private readonly IFunction u;
@@ -7,16 +9,10 @@ public class InverseTangent : IFunction
         this.u = u;
 
     public double this[double x] =>
-        System.Math.Atan(x);
+        Math.Atan(x);
 
     public IFunction Derive() =>
-        u.Derive() / (1 + (u ^ 2));
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
+        u.Derive() / (1 + Pow(u, 2));
 
     public override string ToString() =>
         $"arctg({u})";

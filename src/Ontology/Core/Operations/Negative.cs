@@ -13,12 +13,6 @@ public class Negative : IFunction
     public IFunction Derive() =>
         -u.Derive();
 
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
-
     public override string ToString() =>
         "(-(" + u.ToString() + "))";
 }

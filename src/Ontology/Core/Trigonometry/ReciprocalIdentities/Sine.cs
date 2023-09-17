@@ -9,16 +9,10 @@ public class Sine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        Sin(u[x]);
+        Math.Sin(u[x]);
 
     public IFunction Derive() =>
-        cos(u) * u.Derive();
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
+        Cos(u) * u.Derive();
 
     public override string ToString() =>
         $"sin({u})";

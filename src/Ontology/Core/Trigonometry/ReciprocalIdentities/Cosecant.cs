@@ -10,17 +10,10 @@ public class Cosecant : IFunction
         this.u = u;
 
     public double this[double x] =>
-        1 / Sin(x);
+        1 / Math.Sin(x);
 
     public IFunction Derive() =>
-        -u.Derive() * csc(u) * cot(u);
-
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
+        -u.Derive() * Csc(u) * Cot(u);
 
     public override string ToString() =>
         $"cosec({u})";

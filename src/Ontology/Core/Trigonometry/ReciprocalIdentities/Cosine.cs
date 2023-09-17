@@ -10,16 +10,10 @@ public class Cosine : IFunction
         this.u = u;
 
     public double this[double x] =>
-        Cos(u[x]);
+        Math.Cos(u[x]);
 
     public IFunction Derive() =>
-        -u.Derive() * sin(u);
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
+        -u.Derive() * Sin(u);
 
     public override string ToString() =>
         $"cos({u})";

@@ -3,54 +3,35 @@
 using Functions.Trigonometry.ReciprocalIdentities;
 using Functions.Trigonometry.Inverse;
 using Functions;
-
-#pragma warning disable IDE1006
+using Ontology.Operations;
 
 public static class Calculus
 {
-    #region Linear
+    public static IFunction CreateVariable()
+        => new Linear();
 
-    private static Linear linear = null;
-    public static IFunction x
-    {
-        get
-        {
-            linear ??= new();
-
-            return linear;
-        }
-    }
-    public static IFunction y
-    {
-        get
-        {
-            linear ??= new();
-
-            return linear;
-        }
-    }
-
-    #endregion
+    public static IFunction CreateConstant(double k)
+        => new Constant(k);
 
     #region Constants
 
     private static Constant euler = null;
-    public static IFunction e
+    public static IFunction E
     {
         get
         {
-            euler ??= new(E);
+            euler ??= new(Math.E);
 
             return euler;
         }
     }
 
     private static Constant pi = null;
-    public static IFunction Pi
-    { 
+    public static IFunction PI
+    {
         get
         {
-            pi ??= new(PI);
+            pi ??= new(Math.PI);
 
             return pi;
         }
@@ -58,33 +39,25 @@ public static class Calculus
 
     #endregion
 
-    #region Functions
+    #region Logarithms
 
-    #region Natural Logarithm
+    public static IFunction Ln(IFunction u)
+        => new NaturalLogarithm(u);
 
-    public static IFunction ln(IFunction u) =>
-        new Logarithm(u, e);
+    public static IFunction Ln(double u)
+        => Ln(CreateConstant(u));
 
-    public static IFunction ln(double u) =>
-        new Logarithm(new Constant(u), e);
+    public static IFunction Log(IFunction u, IFunction newBase)
+        => new Logarithm(u, newBase);
 
-    #endregion
+    public static IFunction Log(IFunction u, double newBase)
+        => Log(u, CreateConstant(newBase));
 
-    #region Logarithm
-    public static IFunction log(IFunction u) =>
-        new Logarithm(u, new Constant(10));
+    public static IFunction Log(double u, IFunction newBase)
+        => Log(CreateConstant(u), newBase);
 
-    public static IFunction log(IFunction newBase, IFunction u) =>
-        new Logarithm(u, newBase);
-
-    public static IFunction log(double newBase, IFunction u) =>
-        new Logarithm(u, new Constant(newBase));
-
-    public static IFunction log(IFunction newBase, double u) =>
-        new Logarithm(new Constant(u), newBase);
-
-    public static IFunction log(double newBase, double u) =>
-        new Logarithm(new Constant(u), new Constant(newBase));
+    public static IFunction Log(double u, double newBase)
+        => Log(CreateConstant(u), CreateConstant(newBase));
 
     #endregion
 
@@ -92,148 +65,120 @@ public static class Calculus
 
     #region Reciprocal Identities
 
-    #region Sine
+    public static IFunction Sin(double u)
+        => Sin(CreateConstant(u));
 
-    public static IFunction sin(IFunction u) =>
-        new Sine(u);
+    public static IFunction Sin(IFunction u)
+        => new Sine(u);
+
+    public static IFunction Cos(double u)
+        => Cos(CreateConstant(u));
+
+    public static IFunction Cos(IFunction u)
+        => new Cosine(u);
+
+    public static IFunction Tg(double u)
+        => Tg(CreateConstant(u));
+
+    public static IFunction Tg(IFunction u)
+        => new Tangent(u);
+
+    public static IFunction Sec(double u)
+        => Sec(CreateConstant(u));
+
+    public static IFunction Sec(IFunction u)
+        => new Secant(u);
+
+    public static IFunction Csc(double u)
+        => Csc(CreateConstant(u));
+
+    public static IFunction Csc(IFunction u)
+        => new Cosecant(u);
+
+    public static IFunction Cot(double u)
+        => Cot(CreateConstant(u));
+
+    public static IFunction Cot(IFunction u)
+        => new Cotangent(u);
+
+    #endregion
+
+    #region Inverse Identities
+
+    public static IFunction ArcSine(double u)
+        => ArcSine(CreateConstant(u));
+
+    public static IFunction ArcSine(IFunction u)
+        => new InverseSine(u);
+
+    public static IFunction ArcCosine(double u)
+        => ArcCosine(CreateConstant(u));
+
+    public static IFunction ArcCosine(IFunction u)
+        => new InverseCosine(u);
+
+    public static IFunction ArcTg(double u)
+        => ArcTg(CreateConstant(u));
+
+    public static IFunction ArcTg(IFunction u)
+        => new InverseTangent(u);
+
+    public static IFunction ArcSec(double u)
+        => ArcSec(CreateConstant(u));
+
+    public static IFunction ArcSec(IFunction u)
+        => new InverseSecant(u);
+
+    public static IFunction ArcCsc(double u)
+        => ArcCsc(CreateConstant(u));
+
+    public static IFunction ArcCsc(IFunction u)
+        => new InverseCosecant(u);
+
+    public static IFunction ArcCot(double u)
+        => ArcCot(CreateConstant(u));
+
+    public static IFunction ArcCot(IFunction u)
+        => new InverseCotangent(u);
+
+    #endregion
+
+    #endregion
+
+    #region Operations
+
+    public static IFunction Pow(IFunction f, IFunction g)
+    {
+        if (f is Exponentiation pow)
+        {
+            pow.Add(g);
+
+            return pow;
+        }
+
+        return new Exponentiation(f, g);
+    }
+
+    public static IFunction Pow(double f, IFunction g)
+        => Pow(CreateConstant(f), g);
+
+    public static IFunction Pow(IFunction f, double g)
+        => Pow(f, CreateConstant(g));
     
-    public static IFunction sin(double u) =>
-        new Sine(new Constant(u));
+    public static IFunction Pow(double f, double g)
+        => Pow(CreateConstant(f), CreateConstant(g));
 
-    #endregion
+    public static IFunction Sqrt(IFunction f, IFunction g)
+        => new Exponentiation(f, 1 / g);
 
-    #region Cosine
+    public static IFunction Sqrt(double f, IFunction g)
+        => Sqrt(CreateConstant(f), g);
+
+    public static IFunction Sqrt(IFunction f, double g)
+        => Sqrt(f, CreateConstant(g));
     
-    public static IFunction cos(IFunction u) =>
-        new Cosine(u);
-    
-    public static IFunction cos(double u) =>
-        new Cosine(new Constant(u));
-
-    #endregion
-
-    #region Tangent
-
-    public static IFunction tg(IFunction u) =>
-        new Tangent(u);
-    
-    public static IFunction tg(double u) =>
-        new Tangent(new Constant(u));
-
-    #endregion
-
-    #region Secant
-
-    public static IFunction sec(IFunction u) =>
-        new Secant(u);
-    
-    public static IFunction sec(double u) =>
-        new Secant(new Constant(u));
-
-    #endregion
-
-    #region Cosecant
-
-    public static IFunction csc(IFunction u) =>
-        new Cosecant(u);
-    
-    public static IFunction csc(double u) =>
-        new Cosecant(new Constant(u));
-
-    #endregion
-
-    #region Cotangent
-
-    public static IFunction cot(IFunction u) =>
-        new Cotangent(u);
-
-    public static IFunction cot(double u) =>
-        new Cotangent(new Constant(u));
-
-    #endregion
-
-    #endregion
-
-    #region Inverse
-
-    #region Inverse Sine
-
-    public static IFunction arcsin(IFunction u) =>
-        new InverseSine(u);
-
-    public static IFunction arcsin(double u) =>
-        new InverseSine(new Constant(u));
-
-    #endregion
-
-    #region Inverse Cosine
-
-    public static IFunction arccos(IFunction u) =>
-        new InverseCosine(u);
-
-    public static IFunction arccos(double u) =>
-        new InverseCosine(new Constant(u));
-
-    #endregion
-
-    #region Inverse Tangent
-
-    public static IFunction arctg(IFunction u) =>
-        new InverseTangent(u);
-
-    public static IFunction arctg(double u) =>
-        new InverseTangent(new Constant(u));
-
-    #endregion
-
-    #region Inverse Secant
-
-    public static IFunction arcsec(IFunction u) =>
-        new InverseSecant(u);
-
-    public static IFunction arcsec(double u) =>
-        new InverseSecant(new Constant(u));
-
-    #endregion
-
-    #region Inverse Cosecant
-
-    public static IFunction arccsc(IFunction u) =>
-        new InverseCosecant(u);
-
-    public static IFunction arccsc(double u) =>
-        new InverseCosecant(new Constant(u));
-
-    #endregion
-
-    #region Inverse Cotangent
-
-    public static IFunction arccot(IFunction u) =>
-        new InverseCotangent(u);
-
-    public static IFunction arccot(double u) =>
-        new InverseCotangent(new Constant(u));
-
-    #endregion
-
-    #endregion
-
-    #endregion
-
-    #endregion
-
-    #region Console
-
-    public static void WriteFunc(IFunction func, double x, int derivative = 0) =>
-        System.Console.Write(GetFunc(func, x, derivative));
-    public static void WriteLineFunc(IFunction func, double x, int derivative = 0) =>
-        System.Console.WriteLine(GetFunc(func, x, derivative));
-    public static string GetFunc(IFunction func, double x, int derivative) =>
-        $"f{getDerivative(derivative)}(x) = {func}\nf{getDerivative(derivative)}({x}) = {func[x]}";
-    private static string getDerivative(int derivative) =>
-        string.Join("", Enumerable.Range(0, derivative).Select(x => "'").ToArray());
+    public static IFunction Sqrt(double f, double g)
+        => Sqrt(CreateConstant(f), CreateConstant(g));
 
     #endregion
 }
-
-#pragma warning restore IDE1006

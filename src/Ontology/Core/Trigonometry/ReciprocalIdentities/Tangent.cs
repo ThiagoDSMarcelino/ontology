@@ -10,17 +10,11 @@ public class Tangent : IFunction
         this.u = u;
 
     public double this[double x] =>
-        Tan(u[x]);
+        Math.Tan(u[x]);
 
     public IFunction Derive() =>
-        u.Derive() * sec(u) * sec(u);
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
-
+        u.Derive() * Sec(u) * Sec(u);
+        
     public override string ToString() =>
         $"tg({u})";
 }

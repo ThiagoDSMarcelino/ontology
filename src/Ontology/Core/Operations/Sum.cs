@@ -15,24 +15,14 @@ public class Sum : IFunction
 
     public void Add(IFunction function, int index, bool isSubtraction = false)
     {
+        functions.Insert(index, function);
+
         if (isSubtraction)
-        {
-            functions.Insert(index, function);
             functions[1] = -functions[1];
-        }
-            
-        else
-            functions.Insert(index, function);
     }
 
     public IFunction Derive() =>
         new Sum(functions.Select(f => f.Derive()).ToArray());
-
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
 
     public override string ToString() =>
         "(" + string.Join(" + ", functions.Select(func => func.ToString())) + ")";

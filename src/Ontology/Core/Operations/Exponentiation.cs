@@ -9,11 +9,11 @@ public class Exponentiation : IFunction
     public Exponentiation(params IFunction[] functions) =>
         this.functions = functions.ToList();
 
-    private IFunction getExponent() =>
+    private IFunction GetExponent() =>
         functions.Skip(2).Aggregate(functions[1], (result, func) => result * func);
 
     public double this[double x] =>
-        Pow(functions[0][x], getExponent()[x]);
+        Math.Pow(functions[0][x], GetExponent()[x]);
 
     public void Add(IFunction function) =>
         functions.Add(function);
@@ -24,17 +24,11 @@ public class Exponentiation : IFunction
     public IFunction Derive()
     {
         var u = functions[0];
-        var v = getExponent();
+        var v = GetExponent();
 
-        return v * (u ^ v - 1) * u.Derive() + (u ^ v) * ln(u) * v.Derive();
+        return v * Pow(u, v - 1) * u.Derive() + Pow(u, v) * Ln(u) * v.Derive();
     }
 
-    public IFunction Integrate() =>
-        throw new System.NotImplementedException();
-
-    public IFunction Simplify() =>
-        throw new System.NotImplementedException();
-
     public override string ToString() =>
-        $"{functions[0]}^{getExponent()}";
+        $"{functions[0]}^{GetExponent()}";
 }

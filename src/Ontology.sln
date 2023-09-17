@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ontology", "Ontology\Ontology.csproj", "{C536C4B7-2668-490B-A2A3-AF06FBAEFC01}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ontology.Test", "Ontology.Test\Ontology.Test.csproj", "{EE422F0A-F114-499F-A342-D1D5A7E02CDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ontology.Tests", "Ontology.Tests\Ontology.Tests.csproj", "{F54423D1-8CB3-445F-8D1D-C845CFB1761E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{C536C4B7-2668-490B-A2A3-AF06FBAEFC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C536C4B7-2668-490B-A2A3-AF06FBAEFC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C536C4B7-2668-490B-A2A3-AF06FBAEFC01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE422F0A-F114-499F-A342-D1D5A7E02CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE422F0A-F114-499F-A342-D1D5A7E02CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE422F0A-F114-499F-A342-D1D5A7E02CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE422F0A-F114-499F-A342-D1D5A7E02CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F54423D1-8CB3-445F-8D1D-C845CFB1761E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F54423D1-8CB3-445F-8D1D-C845CFB1761E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F54423D1-8CB3-445F-8D1D-C845CFB1761E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F54423D1-8CB3-445F-8D1D-C845CFB1761E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
