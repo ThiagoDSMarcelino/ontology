@@ -19,10 +19,10 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Restore dependencies
-      run: dotnet restore src/Ontology/Ontology.csproj
+      run: dotnet restore src/Ontology.sln
 
     - name: Build
-      run: dotnet build src/Ontology/Ontology.csproj --configuration Release --no-restore
+      run: dotnet build src/Ontology.sln --configuration Release --no-restore
 
     - name: Test
       run: dotnet test src/Ontology.Tests/Ontology.Tests.csproj --no-restore --configuration Release --collect:"XPlat Code Coverage"
