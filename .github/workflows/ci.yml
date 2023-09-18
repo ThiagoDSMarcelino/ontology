@@ -12,7 +12,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
+      with:
+        path: 'src'
+        
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
