@@ -1,3 +1,11 @@
 {
-    "dotnet.defaultSolution": "Ontology.sln"
+    "dotnet.defaultSolution": "Ontology.sln",
+    "cSpell.words": [
+        "arccos",
+        "arccot",
+        "arccsc",
+        "arcsec",
+        "arctg",
+        "cotg"
+    ]
 }
