@@ -4,10 +4,23 @@ using static Ontology.Calculus;
 
 public class OperationsTest
 {
-    [Fact]
-    public void Negative()
+    public static TheoryData<int> Data()
     {
-        double n = 10;
+        var data = new TheoryData<int>
+        {
+            10,
+            5,
+            1,
+            900000
+        };
+
+        return data;
+    }
+
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Negative(double n)
+    {
         var x = CreateVariable();
         var f = -x;
         var derivate = f.Derive();
@@ -18,10 +31,10 @@ public class OperationsTest
 
     #region Sum Tests
 
-    [Fact]
-    public void Sum()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Sum(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x + x;
         var derivate = f.Derive();
@@ -30,10 +43,10 @@ public class OperationsTest
         Assert.Equal(2, derivate[n]);
     }
 
-    [Fact]
-    public void Sums()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Sums(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x + x + x + x + x;
         var derivate = f.Derive();
@@ -46,10 +59,10 @@ public class OperationsTest
 
     #region Subtraction Tests
 
-    [Fact]
-    public void Subtraction()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Subtraction(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x - x;
         var derivate = f.Derive();
@@ -58,10 +71,10 @@ public class OperationsTest
         Assert.Equal(0, derivate[n]);
     }
 
-    [Fact]
-    public void Subtractions()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Subtractions(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x - x - x - x - x;
         var derivate = f.Derive();
@@ -74,10 +87,10 @@ public class OperationsTest
 
     #region Multiplication Tests
 
-    [Fact]
-    public void Multiplication()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Multiplication(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x * x;
         var derivate = f.Derive();
@@ -86,15 +99,19 @@ public class OperationsTest
         Assert.Equal(n + n, derivate[n]);
     }
 
-    [Fact]
-    public void Multiplications()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Multiplications(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x * x * x * x * x;
         var derivate = f.Derive();
 
-        Assert.Equal(Math.Pow(n, 5), f[n]);
+        double expected = Math.Pow(n, 5);
+        double actual = f[n];
+        double tolerance = Math.Max(Math.Abs(expected), Math.Abs(actual)) * 1e-15;
+
+        Assert.Equal(expected, actual, tolerance);
         Assert.Equal(5 * Math.Pow(n, 4), derivate[n]);
     }
 
@@ -102,28 +119,39 @@ public class OperationsTest
 
     #region Division Tests
 
-    [Fact]
-    public void Division()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Division(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x / x;
         var derivate = f.Derive();
 
-        Assert.Equal(n / n, f[n]);
+        double expected = n / n;
+        double actual = f[n];
+        double tolerance = Math.Max(Math.Abs(expected), Math.Abs(actual)) * 1e-15;
+
+        Assert.Equal(expected, actual, tolerance);
         Assert.Equal(0, derivate[n]);
     }
 
-    [Fact]
-    public void Divisions()
+    [Theory]
+    [MemberData(nameof(Data))]
+    public void Divisions(double n)
     {
-        double n = 10;
         var x = CreateVariable();
         var f = x / x / x;
         var derivate = f.Derive();
 
-        Assert.Equal(n / n / n, f[n]);
-        Assert.Equal(-1/(n * n), derivate[n]);
+        double expected = n / n / n;
+        double expectedDerivate = -1 / (n * n);
+        double actual = f[n];
+        double actualDerivate = derivate[n];
+        double tolerance = Math.Max(Math.Abs(expected), Math.Abs(actual)) * 1e-15;
+        double toleranceDerivate = Math.Max(Math.Abs(expectedDerivate), Math.Abs(actualDerivate)) * 1e-15;
+
+        Assert.Equal(expected, actual, tolerance);
+        Assert.Equal(expectedDerivate, actualDerivate, toleranceDerivate);
     }
 
     #endregion
